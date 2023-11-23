@@ -4,28 +4,34 @@ from django.http import JsonResponse
 
 def get_video_games(request):
     search_query = request.GET.get('search', '')  # Get search query from request parameters
+    page = int(request.GET.get('page', 1))  # Get current page number from request, default is 1
+    limit = 10  # Number of items per page
+    offset = (page - 1) * limit  # Calculate offset
 
-    # SPARQL query to retrieve video games' id, title, releaseDate, averageUserRating, assets, and hasImage
     sparql_query = """
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX game: <http://www.semanticweb.org/game#>
+        PREFIX game: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-        SELECT ?game ?id ?title ?description ?releaseDate ?averageUserRating ?assets ?hasImage WHERE {
-          ?game rdf:type game:Game .
-          ?game game:id ?id .
-          ?game game:title ?title .
-          ?game game:description ?description .
-          ?game game:releaseDate ?releaseDate .
-          ?game game:averageUserRating ?averageUserRating .
-          ?game game:assets ?assets .
-          OPTIONAL { ?game game:hasImage ?hasImage . }
-          FILTER (REGEX(?title, "%s", "i") || REGEX(?description, "%s", "i"))
-        }
-    """ % (search_query, search_query)  # Inject search query into SPARQL FILTER
+        SELECT ?Id ?Title ?CoverURL ?Summary ?Top ?ReleaseDate ?Ranking ?TimesListed ?NumberOfReviews WHERE {
+          ?x game:Id ?IdString .
+          BIND(xsd:integer(?IdString) AS ?Id)
+          ?x game:Title ?Title .
+          ?x game:CoverURL ?CoverURL .
+          ?x game:TrailerURL ?TrailerURL .
+          ?x game:Summary ?Summary .
+          ?x game:Top ?Top .
+          ?x game:ReleaseDate ?ReleaseDate .
+          ?x game:Ranking ?Ranking .
+          ?x game:TimesListed ?TimesListed .
+          ?x game:NumberOfReviews ?NumberOfReviews .
+          FILTER (REGEX(?Title, "%s", "i") || REGEX(?Summary, "%s", "i"))
+        } ORDER BY ?Id LIMIT %d OFFSET %d
+    """ % (search_query, search_query, limit, offset)  # Inject search query into SPARQL FILTER
 
     # Query RDF data using SPARQL
-    sparql = SPARQLWrapper("http://localhost:3030/video-games/query")
+    sparql = SPARQLWrapper("http://localhost:3030/video-games-v2/query")
     sparql.setQuery(sparql_query)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
@@ -34,13 +40,15 @@ def get_video_games(request):
     games_data = []
     for result in results["results"]["bindings"]:
         game = {
-            "id": int(result["id"]["value"]),
-            "title": result["title"]["value"],
-            "description": result["description"]["value"],
-            "releaseDate": result["releaseDate"]["value"],
-            "averageUserRating": float(result["averageUserRating"]["value"]),
-            "assets": result["assets"]["value"],
-            "hasImage": result.get("hasImage", {}).get("value", None)
+            "id": int(result["Id"]["value"]),
+            "title": result["Title"]["value"],
+            "coverURL": result["CoverURL"]["value"],
+            "summary": result["Summary"]["value"],
+            "top": result["Top"]["value"],
+            "releaseDate": result["ReleaseDate"]["value"],
+            "ranking": float(result["Ranking"]["value"]),
+            "timesListed": result["TimesListed"]["value"],
+            "numberOfReviews": result["NumberOfReviews"]["value"],
         }
         games_data.append(game)
 

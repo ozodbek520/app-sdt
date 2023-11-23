@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import ImageComponent from '../image-component/ImageComponent';
 import useDateFormatter from '../../hooks/useDateFormatter';
+import NoGameImage from '../../assets/images/no-game-img.png';
 
 const StyledDiv = styled.div`
   margin-top: 2rem;
@@ -33,6 +34,7 @@ const StyledDiv = styled.div`
       display: inline-block;
       margin-right: 1rem;
       font-size: 16px;
+      margin-bottom: 1rem;
     }
   }
 
@@ -43,7 +45,7 @@ const StyledDiv = styled.div`
     border-radius: 2px;
   }
 `;
-const GameCard = ({ idx, game }) => {
+const GameCard = ({ game }) => {
   const { formatDate } = useDateFormatter();
 
   const formattedDate = formatDate(game.releaseDate);
@@ -51,16 +53,22 @@ const GameCard = ({ idx, game }) => {
   return (
     <StyledDiv>
       <Link className={'title'} to={`/game-details/${game.id}`}>
-        #{idx + 1} {game.title}
+        #️⃣ {game.top} {game.title}
       </Link>
-      <ImageComponent imageUrl={game.hasImage} title={game.title} />
-      <p className={'description'}>{game.description}</p>
+      <ImageComponent
+        imageUrl={game.coverURL === 'http://www.jkosxfjaxd.com' ? NoGameImage : game.coverURL}
+        title={game.title}
+      />
+      <p className={'description'}>{game.summary}</p>
       <ul className="footer-line">
         <li>
-          <b>Rating:</b> ⭐️ {game.averageUserRating}
+          <b>Rating</b> ⭐️: {game.ranking}
         </li>
         <li>
-          <b>Release Date:</b> 🗓️ {formattedDate}
+          <b>Release Date</b> 🗓️: {formattedDate}
+        </li>
+        <li>
+          <b>Times Listed</b> 📈: {game.timesListed}
         </li>
         <li>
           <Link to={`/game-details/${game.id}`} className={'styled-btn'}>

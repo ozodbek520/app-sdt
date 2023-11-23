@@ -5,7 +5,8 @@ import { parsedSearchParams } from '../../helper/parsedSearchParams';
 export const fetchVideoGamesList = createAsyncThunk(
   'application/fetchVideoGamesList',
   async (searchTerm) => {
-    return await getVideoGamesListAPI(searchTerm);
+    const { currentGamesPage, paramValue } = searchTerm;
+    return await getVideoGamesListAPI(paramValue, currentGamesPage);
   }
 );
 
@@ -27,6 +28,7 @@ const initialState = {
   gamesList: [],
   playersList: [],
   gameDetails: null,
+  currentGamesPage: 1,
   search: {
     game: parsedSearchParams('search_game'),
     player: parsedSearchParams('search_player'),
@@ -43,6 +45,9 @@ const applicationSlice = createSlice({
       const param = action.payload.param;
       state.search[param] = action.payload.value;
     },
+    loadMoreGames: (state) => {
+      state.currentGamesPage = state.currentGamesPage + 1;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -56,7 +61,7 @@ const applicationSlice = createSlice({
       })
       .addCase(fetchVideoGamesList.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = true;
       })
       .addCase(fetchBestPlayersList.pending, (state) => {
         state.loading = true;
@@ -68,7 +73,7 @@ const applicationSlice = createSlice({
       })
       .addCase(fetchBestPlayersList.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = true;
       })
       .addCase(fetchGameDetailsById.pending, (state) => {
         state.loading = true;
@@ -80,11 +85,11 @@ const applicationSlice = createSlice({
       })
       .addCase(fetchGameDetailsById.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = true;
       });
   },
 });
 
-export const { setSearchParam } = applicationSlice.actions;
+export const { setSearchParam, loadMoreGames } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

@@ -10,13 +10,13 @@ import { paramsMap } from '../../const';
 function Home() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  const { search } = useSelector((state) => state.application);
+  const { search, currentGamesPage } = useSelector((state) => state.application);
   const param = paramsMap[pathname];
   const paramValue = search[param];
 
   useEffect(() => {
-    dispatch(fetchVideoGamesList(paramValue));
-  }, [paramValue, dispatch]);
+    dispatch(fetchVideoGamesList({ paramValue, currentGamesPage }));
+  }, [paramValue, dispatch, currentGamesPage]);
 
   return (
     <CenterBox>

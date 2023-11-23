@@ -11,16 +11,17 @@ const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    const errorMessage = error.message || 'An error occurred';
+    console.log('error', error);
+    const errorMessage = error.response.data || 'An error occurred';
     const customId = error.response?.status || 500;
     toast.error(errorMessage, { toastId: customId });
     return Promise.reject(error);
   }
 );
 
-export const getVideoGamesListAPI = async (searchTerm = '') => {
+export const getVideoGamesListAPI = async (searchTerm = '', page = 1) => {
   try {
-    const response = await api.get('/video-games', { params: { search: searchTerm } });
+    const response = await api.get('/video-games', { params: { search: searchTerm, page } });
     return response.data;
   } catch (error) {
     return Promise.reject(error);

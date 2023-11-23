@@ -1,20 +1,30 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import GameCard from './GameCard';
 import styled from 'styled-components';
 import NoData from '../../UI/NoData';
+import { loadMoreGames } from '../../store/reducers/applicationSlice';
 
 const StyledDiv = styled.div``;
 
 const GamesList = () => {
-  const { gamesList, loading } = useSelector((state) => state.application);
+  const { gamesList, loading, error } = useSelector((state) => state.application);
+  const dispatch = useDispatch();
 
   return (
     <StyledDiv>
-      {!loading && gamesList.length === 0 ? (
+      {!loading && error ? (
         <NoData />
       ) : (
-        gamesList.map((game, idx) => <GameCard key={game.id} game={game} idx={idx} />)
+        <>
+          {gamesList.map((game, id) => (
+            <GameCard key={id} game={game} />
+          ))}
+          <br />
+          <button onClick={() => dispatch(loadMoreGames())} className="styled-btn">
+            Load more
+          </button>
+        </>
       )}
     </StyledDiv>
   );
