@@ -311,6 +311,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerGameID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerGameID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetails"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerGameName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerGameName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetails"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerImageURL -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerImageURL">
@@ -682,6 +700,7 @@
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player"/>
         <video-games-v2:hasPlayerDetails rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetailsID1"/>
         <video-games-v2:Id xml:lang="en">1</video-games-v2:Id>
     </owl:NamedIndividual>
@@ -691,6 +710,7 @@
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player2 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player"/>
         <video-games-v2:hasPlayerDetails rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetailsID2"/>
         <video-games-v2:Id xml:lang="en">2</video-games-v2:Id>
     </owl:NamedIndividual>
@@ -700,6 +720,7 @@
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player3 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player"/>
         <video-games-v2:hasPlayerDetails rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetailsID3"/>
         <video-games-v2:Id xml:lang="en">3</video-games-v2:Id>
     </owl:NamedIndividual>
@@ -709,6 +730,7 @@
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player4 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player"/>
         <video-games-v2:hasPlayerDetails rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetailsID4"/>
         <video-games-v2:Id xml:lang="en">4</video-games-v2:Id>
     </owl:NamedIndividual>
@@ -718,6 +740,7 @@
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player5 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player"/>
         <video-games-v2:hasPlayerDetails rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetailsID5"/>
         <video-games-v2:Id xml:lang="en">5</video-games-v2:Id>
     </owl:NamedIndividual>
@@ -727,6 +750,7 @@
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player6 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player"/>
         <video-games-v2:hasPlayerDetails rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetailsID6"/>
         <video-games-v2:Id xml:lang="en">6</video-games-v2:Id>
     </owl:NamedIndividual>
@@ -739,7 +763,10 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetails"/>
         <video-games-v2:GameID>PewDiePie’s energetic and funny commentating on games with epic reactions made him a viral phenomenon very quickly, and he became the most subscribed YouTube channel in 2012 with 5 million subscribers.</video-games-v2:GameID>
         <video-games-v2:PlayerDetailsID>PlayerDetailsID1</video-games-v2:PlayerDetailsID>
+        <video-games-v2:PlayerGameID xml:lang="en">1</video-games-v2:PlayerGameID>
+        <video-games-v2:PlayerGameName xml:lang="en">Minecraft</video-games-v2:PlayerGameName>
         <video-games-v2:PlayerImageURL>https://variety.com/wp-content/uploads/2019/12/pewdiepie.png</video-games-v2:PlayerImageURL>
+        <video-games-v2:PlayerName xml:lang="en">Felix Arvid Ulf Kjellberg (PewDiePie)</video-games-v2:PlayerName>
         <video-games-v2:Prize>40000000</video-games-v2:Prize>
         <video-games-v2:SocialLink>https://twitter.com/pewdiepie</video-games-v2:SocialLink>
     </owl:NamedIndividual>
@@ -752,7 +779,10 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetails"/>
         <video-games-v2:GameID>Best Dota 2 Player </video-games-v2:GameID>
         <video-games-v2:PlayerDetailsID>PlayerDetailsID2</video-games-v2:PlayerDetailsID>
+        <video-games-v2:PlayerGameID xml:lang="en">2</video-games-v2:PlayerGameID>
+        <video-games-v2:PlayerGameName xml:lang="en">Dota 2</video-games-v2:PlayerGameName>
         <video-games-v2:PlayerImageURL>https://dotesports.com/wp-content/uploads/wp-content/uploads/2022/02/16045515/48617255962_51d3cbfe84_k-1-1024x576.jpg</video-games-v2:PlayerImageURL>
+        <video-games-v2:PlayerName xml:lang="en">Johan  Sundstein (N0tail)</video-games-v2:PlayerName>
         <video-games-v2:Prize>7200000</video-games-v2:Prize>
         <video-games-v2:SocialLink>https://twitter.com/OG_BDN0tail?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor</video-games-v2:SocialLink>
     </owl:NamedIndividual>
@@ -765,7 +795,10 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetails"/>
         <video-games-v2:GameID>Top Counter Strike Player</video-games-v2:GameID>
         <video-games-v2:PlayerDetailsID>PlayerDetailsID3</video-games-v2:PlayerDetailsID>
+        <video-games-v2:PlayerGameID xml:lang="en">4</video-games-v2:PlayerGameID>
+        <video-games-v2:PlayerGameName xml:lang="en">Counter Strike 2</video-games-v2:PlayerGameName>
         <video-games-v2:PlayerImageURL>https://dotesports.com/wp-content/uploads/wp-content/uploads/2021/10/27070750/20190511_Joao-Ferreira_BLASTMadrid_03048-1024x683-1.jpg</video-games-v2:PlayerImageURL>
+        <video-games-v2:PlayerName xml:lang="en">Peter Rasmussen (dupreeh)</video-games-v2:PlayerName>
         <video-games-v2:Prize>2000000</video-games-v2:Prize>
         <video-games-v2:SocialLink>https://twitter.com/dupreeh?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor</video-games-v2:SocialLink>
     </owl:NamedIndividual>
@@ -778,7 +811,10 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetails"/>
         <video-games-v2:GameID>yhNf2kluG7Yf0TNl5xGt</video-games-v2:GameID>
         <video-games-v2:PlayerDetailsID>PlayerDetailsID4</video-games-v2:PlayerDetailsID>
+        <video-games-v2:PlayerGameID xml:lang="en">22</video-games-v2:PlayerGameID>
+        <video-games-v2:PlayerGameName xml:lang="en">PUBG: Battlegrounds</video-games-v2:PlayerGameName>
         <video-games-v2:PlayerImageURL>https://www.hotnewhiphop.com/cdn-cgi/image/width=1140,height=600,quality=81,fit=cover/images/v2/2023/08/shroud-scaled.jpeg</video-games-v2:PlayerImageURL>
+        <video-games-v2:PlayerName xml:lang="en">Michael Grzesiek (Shroud)</video-games-v2:PlayerName>
         <video-games-v2:Prize>20000000</video-games-v2:Prize>
         <video-games-v2:SocialLink>https://twitter.com/shroud</video-games-v2:SocialLink>
     </owl:NamedIndividual>
@@ -791,7 +827,10 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetails"/>
         <video-games-v2:GameID>Germán Alejandro Garmendia Aranis is a Chilean YouTuber, singer-songwriter, comedian and writer.</video-games-v2:GameID>
         <video-games-v2:PlayerDetailsID>PlayerDetailsID5</video-games-v2:PlayerDetailsID>
+        <video-games-v2:PlayerGameID xml:lang="en">70</video-games-v2:PlayerGameID>
+        <video-games-v2:PlayerGameName xml:lang="en">Pokémon Diamond and Pearl</video-games-v2:PlayerGameName>
         <video-games-v2:PlayerImageURL>https://miro.medium.com/v2/resize:fit:1187/1*TmGOXjkSBREP-PqGtI5YHQ.jpeg</video-games-v2:PlayerImageURL>
+        <video-games-v2:PlayerName xml:lang="en">Germán Alejandro Garmendia Aranis (JuegaGerman)</video-games-v2:PlayerName>
         <video-games-v2:Prize>11200000</video-games-v2:Prize>
         <video-games-v2:SocialLink>https://twitter.com/GermanGarmendia</video-games-v2:SocialLink>
     </owl:NamedIndividual>
@@ -804,7 +843,10 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#PlayerDetails"/>
         <video-games-v2:GameID>Fernanfloo&apos;s merchandise line, which includes t-shirts, hoodies, and other accessories, is a testament to his entrepreneurial spirit. </video-games-v2:GameID>
         <video-games-v2:PlayerDetailsID>PlayerDetailsID6</video-games-v2:PlayerDetailsID>
+        <video-games-v2:PlayerGameID xml:lang="en">88</video-games-v2:PlayerGameID>
+        <video-games-v2:PlayerGameName xml:lang="en">God of War II</video-games-v2:PlayerGameName>
         <video-games-v2:PlayerImageURL>https://upload.wikimedia.org/wikipedia/commons/6/6c/Fernanfloo_2022.png</video-games-v2:PlayerImageURL>
+        <video-games-v2:PlayerName xml:lang="en">Luis Fernando Flores (Alvarado)</video-games-v2:PlayerName>
         <video-games-v2:Prize>6800000</video-games-v2:Prize>
         <video-games-v2:SocialLink>https://twitter.com/fernanfloo</video-games-v2:SocialLink>
     </owl:NamedIndividual>
@@ -821,7 +863,7 @@
         <video-games-v2:Id>1</video-games-v2:Id>
         <video-games-v2:NumberOfReviews>2.3K</video-games-v2:NumberOfReviews>
         <video-games-v2:PlayerImageURL>http://www.lefwlwriwj.com</video-games-v2:PlayerImageURL>
-        <video-games-v2:PlayerName>DJxoSAUlrz</video-games-v2:PlayerName>
+        <video-games-v2:PlayerName xml:lang="en">Felix Arvid Ulf Kjellberg (PewDiePie)</video-games-v2:PlayerName>
         <video-games-v2:Prize>593251.7736067933</video-games-v2:Prize>
         <video-games-v2:Ranking>4.3</video-games-v2:Ranking>
         <video-games-v2:ReleaseDate>2011-11-18</video-games-v2:ReleaseDate>
@@ -1105,7 +1147,9 @@
         <video-games-v2:Ranking>4.3</video-games-v2:Ranking>
         <video-games-v2:ReleaseDate>2013-07-09</video-games-v2:ReleaseDate>
         <video-games-v2:SocialLink>https://twitter.com/OG_BDN0tail?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor</video-games-v2:SocialLink>
-        <video-games-v2:Summary>A competitive online battle arena game.</video-games-v2:Summary>
+        <video-games-v2:Summary xml:lang="en">&quot;Dota 2&quot; is a highly acclaimed multiplayer online battle arena (MOBA) game developed and published by Valve Corporation. As a sequel to &quot;Defense of the Ancients&quot; (DotA), which was a community-created mod for Blizzard Entertainment&apos;s &quot;Warcraft III: Reign of Chaos,&quot; &quot;Dota 2&quot; has evolved into a standalone title that maintains the core gameplay of its predecessor.
+
+In &quot;Dota 2,&quot; two teams of five players compete to destroy a large structure defended by the opposing team known as the &quot;Ancient,&quot; situated within their base. The game is renowned for its complex and deep strategic gameplay, where each player controls a powerful character known as a &quot;hero,&quot; each with unique abilities and play styles. The heroes can be strengthened over the course of a match by collecting experience points, purchasing items, and engaging in combat with enemy players and neutral monsters.</video-games-v2:Summary>
         <video-games-v2:TimesListed>5K</video-games-v2:TimesListed>
         <video-games-v2:Title>Dota 2</video-games-v2:Title>
         <video-games-v2:Top>2</video-games-v2:Top>
@@ -1619,7 +1663,11 @@
         <video-games-v2:Ranking>4.5</video-games-v2:Ranking>
         <video-games-v2:ReleaseDate>2023-09-01</video-games-v2:ReleaseDate>
         <video-games-v2:SocialLink>https://twitter.com/dupreeh?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor</video-games-v2:SocialLink>
-        <video-games-v2:Summary>A tactical first-person shooter game.</video-games-v2:Summary>
+        <video-games-v2:Summary xml:lang="en">Counter-Strike 2 (CS2) is a 2023 multiplayer tactical first-person shooter game developed and published by Valve. It is the fifth main installment of the Counter-Strike series. Developed as an updated version of the previous main entry, Counter-Strike: Global Offensive (2012), it was announced on March 22, 2023 and was released on September 27, 2023, replacing Global Offensive on Steam.
+
+Like its predecessor, the game pits two teams, the Counter-Terrorists and the Terrorists, against each other in various objective-based gamemodes. Counter-Strike 2 features major technical improvements over Global Offensive, including a move from the Source game engine to Source 2, improved graphics and new server architecture. In addition, many maps from Global Offensive were updated to use the features of Source 2, with some maps receiving complete overhauls.
+
+Upon release, Counter-Strike 2 received generally favorable reviews from critics. In contrast, player reception was mixed; criticism was directed at the delisting of Global Offensive from Steam, degraded game performance, and the removal of several features that had been present in Global Offensive. As a result, Counter-Strike 2 received thousands of negative user reviews on Steam, leading to it becoming one of the lowest-rated Valve titles on the platform.</video-games-v2:Summary>
         <video-games-v2:TimesListed>4K</video-games-v2:TimesListed>
         <video-games-v2:Title>Counter Strike 2</video-games-v2:Title>
         <video-games-v2:Top>4</video-games-v2:Top>
@@ -2136,7 +2184,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#6">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
-        <video-games-v2:CoverURL>https://static.wikia.nocookie.net/ideas/images/4/4b/Undertale_2022_Poster.png/revision/latest/scale-to-width-down/1200?cb=20220117231715</video-games-v2:CoverURL>
+        <video-games-v2:CoverURL xml:lang="en">https://media.proprofs.com/images/QM/user_images/2503852/New%20Project%20(8)(135).jpg</video-games-v2:CoverURL>
         <video-games-v2:Id>6</video-games-v2:Id>
         <video-games-v2:NumberOfReviews>3.5K</video-games-v2:NumberOfReviews>
         <video-games-v2:PlayerImageURL>http://www.lefwlwriwj.com</video-games-v2:PlayerImageURL>
@@ -2914,29 +2962,6 @@
         <video-games-v2:Title>S.T.A.L.K.E.R.: Shadow of Chernobyl</video-games-v2:Title>
         <video-games-v2:Top>173</video-games-v2:Top>
         <video-games-v2:TrailerURL>http://www.yaoptzwssl.com</video-games-v2:TrailerURL>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#9 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#9">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
-        <video-games-v2:CoverURL>https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/449BBgnc3Q1ha2IN9rh3bR/234dfb6f242b302e411a172816e71286/ACEC_Keyart_00_00_00_mobile.jpg</video-games-v2:CoverURL>
-        <video-games-v2:Id>9</video-games-v2:Id>
-        <video-games-v2:NumberOfReviews>3K</video-games-v2:NumberOfReviews>
-        <video-games-v2:PlayerImageURL>http://www.lefwlwriwj.com</video-games-v2:PlayerImageURL>
-        <video-games-v2:PlayerName>DJxoSAUlrz</video-games-v2:PlayerName>
-        <video-games-v2:Prize>593251.7736067933</video-games-v2:Prize>
-        <video-games-v2:Ranking>4.1</video-games-v2:Ranking>
-        <video-games-v2:ReleaseDate>2007-11-13</video-games-v2:ReleaseDate>
-        <video-games-v2:SocialLink>http://www.httfhouseh.com</video-games-v2:SocialLink>
-        <video-games-v2:Summary>An action-adventure game set in historical times.</video-games-v2:Summary>
-        <video-games-v2:TimesListed>3K</video-games-v2:TimesListed>
-        <video-games-v2:Title>Assassin&apos;s Creed</video-games-v2:Title>
-        <video-games-v2:Top>9</video-games-v2:Top>
-        <video-games-v2:TrailerURL>https://www.youtube.com/watch?v=x55lAlFtXmw&amp;ab_channel=Ubisoft</video-games-v2:TrailerURL>
     </owl:NamedIndividual>
     
 
