@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import useDateFormatter from '../../hooks/useDateFormatter';
-import button from 'bootstrap/js/src/button';
 import { useNavigate } from 'react-router-dom';
 
 const StyledDiv = styled.div`

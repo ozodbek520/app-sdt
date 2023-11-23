@@ -1,7 +1,3 @@
-from SPARQLWrapper import SPARQLWrapper, JSON
-from django.http import JsonResponse
-
-
 # get video games lit
 def get_video_games(request):
     search_query = request.GET.get('search', '')  # Get search query from request parameters
@@ -170,7 +166,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 from django.http import JsonResponse
 
 
-# best player details
+# get the best player details
 def get_best_player_details(request, game_id):
     if game_id is None:
         return JsonResponse({"error": "Invalid game ID"}, status=400)
