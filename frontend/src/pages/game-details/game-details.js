@@ -21,8 +21,6 @@ const GameDetails = () => {
     dispatch(fetchGameDetailsById(Number(id)));
   }, [id, dispatch]);
 
-  console.log(gameDetails);
-
   const renderContent = () => {
     if (loading) return null;
 
@@ -32,7 +30,11 @@ const GameDetails = () => {
 
     return (
       <>
-        <GameDetailsHeader title={gameDetails?.title} videoUrl={gameDetails?.assets} />
+        <GameDetailsHeader
+          title={gameDetails?.title}
+          videoUrl={gameDetails?.trailerURL}
+          top={gameDetails?.top}
+        />
         <GameDetailsBody gameDetails={gameDetails} />
       </>
     );

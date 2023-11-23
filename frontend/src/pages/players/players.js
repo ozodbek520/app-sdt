@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Header from '../../components/header/Header';
 import CenterBox from '../../UI/CenterBox';
 import PlayersList from '../../components/players/PlayersList';
@@ -11,11 +11,12 @@ const Players = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const { search } = useSelector((state) => state.application);
-  const param = paramsMap[pathname];
-  const paramValue = search[param];
+
+  const param = useMemo(() => paramsMap[pathname], [pathname]);
+  const paramValue = useMemo(() => search[param], [search, param]);
 
   useEffect(() => {
-    dispatch(fetchBestPlayersList(paramValue));
+    dispatch(fetchBestPlayersList({ paramValue }));
   }, [paramValue, dispatch]);
 
   return (

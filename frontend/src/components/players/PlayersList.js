@@ -15,7 +15,7 @@ const PlayersList = () => {
         <NoData />
       ) : (
         playersList.map((player, idx) => (
-          <PlayerCard key={player.gameId} player={player} idx={idx} />
+          <PlayerCard key={player.id} player={player} idx={idx} />
         ))
       )}
     </StyledDiv>

@@ -12,10 +12,12 @@ const StyledDiv = styled.div`
     font-size: 24px;
   }
 `;
-const GameDetailsHeader = ({ title, videoUrl }) => {
+const GameDetailsHeader = ({ title, videoUrl, top }) => {
   return (
     <StyledDiv>
-      <h3 className="title">{title}</h3>
+      <h3 className="title">
+        #️⃣{top} {title}
+      </h3>
       <VideoPlayer videoUrl={videoUrl} />
     </StyledDiv>
   );

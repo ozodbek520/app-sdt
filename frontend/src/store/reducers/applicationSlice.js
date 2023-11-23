@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getBestPlayersListAPI, getGameDetailsAPI, getVideoGamesListAPI } from '../../api';
+import {
+  getBestPlayerDetailsAPI,
+  getBestPlayersListAPI,
+  getGameDetailsAPI,
+  getVideoGamesListAPI,
+} from '../../api';
 import { parsedSearchParams } from '../../helper/parsedSearchParams';
 
 export const fetchVideoGamesList = createAsyncThunk(
@@ -13,7 +18,8 @@ export const fetchVideoGamesList = createAsyncThunk(
 export const fetchBestPlayersList = createAsyncThunk(
   'application/fetchBestPlayersList',
   async (searchTerm) => {
-    return await getBestPlayersListAPI(searchTerm);
+    const { paramValue } = searchTerm;
+    return await getBestPlayersListAPI(paramValue);
   }
 );
 
@@ -24,10 +30,18 @@ export const fetchGameDetailsById = createAsyncThunk(
   }
 );
 
+export const fetchBestPlayerDetailsByGameId = createAsyncThunk(
+  'application/fetchBestPlayerDetailsByGameId',
+  async (id) => {
+    return await getBestPlayerDetailsAPI(id);
+  }
+);
+
 const initialState = {
   gamesList: [],
   playersList: [],
   gameDetails: null,
+  bestPlayerDetails: null,
   currentGamesPage: 1,
   search: {
     game: parsedSearchParams('search_game'),
@@ -84,6 +98,18 @@ const applicationSlice = createSlice({
         state.gameDetails = action.payload;
       })
       .addCase(fetchGameDetailsById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = true;
+      })
+      .addCase(fetchBestPlayerDetailsByGameId.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchBestPlayerDetailsByGameId.fulfilled, (state, action) => {
+        state.loading = false;
+        state.bestPlayerDetails = action.payload;
+      })
+      .addCase(fetchBestPlayerDetailsByGameId.rejected, (state, action) => {
         state.loading = false;
         state.error = true;
       });

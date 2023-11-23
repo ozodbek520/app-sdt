@@ -45,3 +45,12 @@ export const getGameDetailsAPI = async (gameId) => {
     return Promise.reject(error);
   }
 };
+
+export const getBestPlayerDetailsAPI = async (gameId) => {
+  try {
+    const response = await api.get(`/best-players-details/${gameId}`);
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};

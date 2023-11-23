@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import CenterBox from '../../UI/CenterBox';
 import Header from '../../components/header/Header';
 import GamesList from '../../components/games/GamesList';
@@ -11,8 +11,9 @@ function Home() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const { search, currentGamesPage } = useSelector((state) => state.application);
-  const param = paramsMap[pathname];
-  const paramValue = search[param];
+
+  const param = useMemo(() => paramsMap[pathname], [pathname]);
+  const paramValue = useMemo(() => search[param], [search, param]);
 
   useEffect(() => {
     dispatch(fetchVideoGamesList({ paramValue, currentGamesPage }));
@@ -20,7 +21,7 @@ function Home() {
 
   return (
     <CenterBox>
-      <Header title={'Video Games'} icon={'👾'} />
+      <Header title="Video Games" icon="👾" />
       <GamesList />
     </CenterBox>
   );

@@ -2,10 +2,11 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 from django.http import JsonResponse
 
 
+# get video games lit
 def get_video_games(request):
     search_query = request.GET.get('search', '')  # Get search query from request parameters
     page = int(request.GET.get('page', 1))  # Get current page number from request, default is 1
-    limit = 10  # Number of items per page
+    limit = 25  # Number of items per page
     offset = (page - 1) * limit  # Calculate offset
 
     sparql_query = """
@@ -55,30 +56,95 @@ def get_video_games(request):
     return JsonResponse(games_data, safe=False)
 
 
-def get_best_players(request):
-    # SPARQL query to retrieve players with earnings greater than 0 and their details
-    sparql_query = """
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX game: <http://www.semanticweb.org/game#>
-        PREFIX person: <http://www.semanticweb.org/video-games#>
+# get video game details by ID
+def get_game_details(request, game_id):
+    if game_id is None:
+        return JsonResponse({"error": "Invalid game ID"}, status=400)
 
-        SELECT ?gameId ?title ?bestPlayer ?playerName ?earnings ?image ?bestAchievement ?socialLink WHERE {
-           ?game rdf:type game:Game .
-           ?game game:id ?gameId .
-           ?game game:title ?title .
-           ?game game:bestPlayer ?bestPlayer .
-           ?bestPlayer rdf:type person:Player .
-           ?bestPlayer person:name ?playerName .
-           ?bestPlayer person:earnings ?earnings .
-           ?bestPlayer person:image ?image .
-           ?bestPlayer person:bestAchievement ?bestAchievement .
-           ?bestPlayer person:socialLink ?socialLink .
+    sparql_query = """
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX game: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+        SELECT ?Id ?Title ?CoverURL ?TrailerURL ?Summary ?Top ?ReleaseDate ?Ranking ?TimesListed ?NumberOfReviews ?PlayerName WHERE {
+          ?x game:Id ?IdString .
+          BIND(xsd:integer(?IdString) AS ?Id)
+          ?x game:Title ?Title .
+          ?x game:CoverURL ?CoverURL .
+          ?x game:TrailerURL ?TrailerURL .
+          ?x game:TrailerURL ?TrailerURL .
+          ?x game:Summary ?Summary .
+          ?x game:Top ?Top .
+          ?x game:ReleaseDate ?ReleaseDate .
+          ?x game:Ranking ?Ranking .
+          ?x game:TimesListed ?TimesListed .
+          ?x game:NumberOfReviews ?NumberOfReviews .
+          ?x game:PlayerName ?PlayerName .
+          FILTER(xsd:integer(?IdString) = %d)
+        } ORDER BY ?Id
+    """ % int(game_id)  # Inject game ID into SPARQL FILTER
+
+    # Query RDF data using SPARQL
+    sparql = SPARQLWrapper("http://localhost:3030/video-games-v2/query")
+    sparql.setQuery(sparql_query)
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+
+    # Process SPARQL results and return as JSON response
+    game_data = None
+    for result in results["results"]["bindings"]:
+        game_data = {
+            "id": int(result["Id"]["value"]),
+            "title": result["Title"]["value"],
+            "coverURL": result["CoverURL"]["value"],
+            "trailerURL": result["TrailerURL"]["value"],
+            "summary": result["Summary"]["value"],
+            "top": result["Top"]["value"],
+            "releaseDate": result["ReleaseDate"]["value"],
+            "ranking": float(result["Ranking"]["value"]),
+            "timesListed": result["TimesListed"]["value"],
+            "numberOfReviews": result["NumberOfReviews"]["value"],
+            "playerName": result["PlayerName"]["value"],
         }
-        ORDER BY DESC(?earnings)
+        break  # Assuming ID is unique, break after finding the first match
+
+    if game_data:
+        return JsonResponse(game_data, safe=False)
+    else:
+        return JsonResponse({"error": "Game not found"}, status=404)
+
+
+# get the best players list
+def get_best_players(request):
+    # SPARQL query to retrieve player details
+    sparql_query = """
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX player: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+        SELECT ?Id ?PlayerName ?SocialLink ?PlayerImageURL ?Prize ?PlayerGameName ?PlayerGameID WHERE {
+            ?player rdf:type player:Player .
+            ?player player:Id ?IdString .
+            ?player player:hasPlayerDetails ?details .
+
+            ?details player:PlayerName ?PlayerName .
+            ?details player:SocialLink ?SocialLink .
+            ?details player:PlayerImageURL ?PlayerImageURL .
+            ?details player:Prize ?PrizeString .
+            ?details player:PlayerGameName ?PlayerGameName .
+            ?details player:PlayerGameID ?PlayerGameIDString .
+
+            BIND(xsd:integer(?IdString) AS ?Id)
+            BIND(xsd:integer(?PlayerGameIDString) AS ?PlayerGameID)
+            BIND(xsd:integer(?PrizeString) AS ?Prize)
+        }
+        ORDER BY DESC(?Prize)
     """
 
     # Query RDF data using SPARQL
-    sparql = SPARQLWrapper("http://localhost:3030/video-games/query")
+    sparql = SPARQLWrapper("http://localhost:3030/video-games-v2/query")
     sparql.setQuery(sparql_query)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
@@ -87,120 +153,73 @@ def get_best_players(request):
     players_data = []
     for result in results["results"]["bindings"]:
         player = {
-            "gameId": result["gameId"]["value"],
-            "title": result["title"]["value"],
-            "bestPlayerName": result["playerName"]["value"],
-            "earnings": float(result["earnings"]["value"]),
-            "image": result["image"]["value"],
-            "bestAchievement": result["bestAchievement"]["value"],
-            "socialLink": result["socialLink"]["value"]
+            "id": int(result["Id"]["value"]),
+            "playerName": result["PlayerName"]["value"],
+            "socialLink": result["SocialLink"]["value"],
+            "playerImageURL": result["PlayerImageURL"]["value"],
+            "prize": result["Prize"]["value"],
+            "playerGameName": result["PlayerGameName"]["value"],
+            "playerGameID": int(result["PlayerGameID"]["value"])
         }
         players_data.append(player)
 
     return JsonResponse(players_data, safe=False)
 
 
-def get_game_details(request, game_id):
+from SPARQLWrapper import SPARQLWrapper, JSON
+from django.http import JsonResponse
+
+
+# best player details
+def get_best_player_details(request, game_id):
     if game_id is None:
         return JsonResponse({"error": "Invalid game ID"}, status=400)
 
-    # SPARQL query to retrieve detailed information about a specific game
+    game_id_int = int(game_id)  # Convert game_id to an integer for safe injection
+
     sparql_query = """
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX game: <http://www.semanticweb.org/game#>
-        PREFIX person: <http://www.semanticweb.org/video-games#>
-        PREFIX platform: <http://www.semanticweb.org/platform#>
-        PREFIX genre: <http://www.semanticweb.org/genre#>
-        PREFIX character: <http://www.semanticweb.org/character#>
-        PREFIX review: <http://www.semanticweb.org/review#>
+        PREFIX game: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
+        PREFIX player: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-        SELECT ?title ?description ?releaseDate ?averageUserRating ?assets ?hasImage
-               ?developerName ?developerHeadquarters
-               ?platformName ?platformReleaseDate
-               ?genreName
-               ?characterName ?characterDescription
-               ?userReviewText
-        WHERE {
-            ?game rdf:type game:Game .
-            ?game game:id ?id .
-            FILTER (?id = %s)  # Filter by game ID
+        SELECT ?PlayerId ?PlayerName ?SocialLink ?PlayerImageURL ?Prize ?PlayerGameName ?PlayerGameID WHERE {
+          ?game rdf:type game:Game .
+          ?game game:Id ?GameIdString .
+          FILTER(xsd:integer(?GameIdString) = %d)
+          ?game game:hasBestPlayer ?player .
+          ?player player:Id ?PlayerIdString .
+          ?player player:hasPlayerDetails ?details .
+          ?details player:PlayerName ?PlayerName .
+          ?details player:SocialLink ?SocialLink .
+          ?details player:PlayerImageURL ?PlayerImageURL .
+          ?details player:Prize ?PrizeString .
+          ?details player:PlayerGameName ?PlayerGameName .
+          ?details player:PlayerGameID ?PlayerGameIDString .
 
-            # Retrieve game details
-            ?game game:title ?title .
-            ?game game:description ?description .
-            ?game game:releaseDate ?releaseDate .
-            ?game game:averageUserRating ?averageUserRating .
-            ?game game:assets ?assets .
-            OPTIONAL { ?game game:hasImage ?hasImage . }
-
-            # Retrieve developer details (optional)
-            OPTIONAL {
-                ?game game:developedBy ?developer .
-                ?developer rdf:type person:Developer .
-                ?developer person:name ?developerName .
-                ?developer person:headquarters ?developerHeadquarters .
-            }
-
-            # Retrieve platform details (optional)
-            OPTIONAL {
-                ?game game:availableOn ?platform .
-                ?platform rdf:type platform:Platform .
-                ?platform platform:name ?platformName .
-                ?platform platform:releaseDate ?platformReleaseDate .
-            }
-
-            # Retrieve genre details (optional)
-            OPTIONAL {
-                ?game game:belongsToGenre ?genre .
-                ?genre rdf:type genre:Genre .
-                ?genre genre:name ?genreName .
-            }
-
-            # Retrieve character details (optional)
-            OPTIONAL {
-                ?game game:appearsInGame ?character .
-                ?character rdf:type character:Character .
-                ?character character:name ?characterName .
-                ?character character:description ?characterDescription .
-            }
-
-            # Retrieve user review text (optional)
-            OPTIONAL {
-                ?game game:hasUserReview ?userReview .
-                ?userReview rdf:type review:UserReview .
-                ?userReview review:reviewedGame ?game .
-                ?userReview review:reviewText ?userReviewText .
-            }
+          BIND(xsd:integer(?PlayerIdString) AS ?PlayerId)
+          BIND(xsd:integer(?PlayerGameIDString) AS ?PlayerGameID)
+          BIND(xsd:integer(?PrizeString) AS ?Prize)
         }
-    """ % game_id  # Inject game ID into SPARQL FILTER
+    """ % game_id_int
 
-    # Query RDF data using SPARQL
-    sparql = SPARQLWrapper("http://localhost:3030/video-games/query")
+    sparql = SPARQLWrapper("http://localhost:3030/video-games-v2/query")
     sparql.setQuery(sparql_query)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
 
-    # Process SPARQL results and return as JSON response
-    game_details = {}
-    for result in results["results"]["bindings"]:
-        game_details = {
-            "title": result["title"]["value"],
-            "description": result["description"]["value"],
-            "releaseDate": result["releaseDate"]["value"],
-            "averageUserRating": float(result["averageUserRating"]["value"]),
-            "assets": result["assets"]["value"],
-            "hasImage": result.get("hasImage", {}).get("value", None),
-            "developerName": result.get("developerName", {}).get("value", None),
-            "developerHeadquarters": result.get("developerHeadquarters", {}).get("value", None),
-            "platformName": result.get("platformName", {}).get("value", None),
-            "platformReleaseDate": result.get("platformReleaseDate", {}).get("value", None),
-            "genreName": result.get("genreName", {}).get("value", None),
-            "characterName": result.get("characterName", {}).get("value", None),
-            "characterDescription": result.get("characterDescription", {}).get("value", None),
-            "userReviewText": result.get("userReviewText", {}).get("value", None)
+    if results["results"]["bindings"]:
+        result = results["results"]["bindings"][0]
+        player_details = {
+            "playerId": int(result["PlayerId"]["value"]),
+            "playerName": result["PlayerName"]["value"],
+            "socialLink": result["SocialLink"]["value"],
+            "playerImageURL": result["PlayerImageURL"]["value"],
+            "prize": int(result["Prize"]["value"]),
+            "playerGameName": result["PlayerGameName"]["value"],
+            "playerGameID": int(result["PlayerGameID"]["value"])
         }
-
-    if not game_details:
-        return JsonResponse({"error": "Game details not found"}, status=404)
-
-    return JsonResponse(game_details, safe=False)
+        return JsonResponse(player_details, safe=False)
+    else:
+        return JsonResponse({"message": "Best player not found for the given game ID"}, status=404)

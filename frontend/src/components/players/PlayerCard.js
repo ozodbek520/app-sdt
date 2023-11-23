@@ -52,26 +52,23 @@ const StyledDiv = styled.div`
   }
 `;
 
-const PlayerCard = ({ idx, player }) => {
+const PlayerCard = ({ idx = '', player }) => {
   return (
     <StyledDiv>
-      <a href={player.socialLink} target="_blank" rel="noreferrer" className={'title'}>
-        #{idx + 1} {player.bestPlayerName} 🔗
+      <a href={player?.socialLink} target="_blank" rel="noreferrer" className={'title'}>
+        {idx !== '' ? `#${idx + 1}` : ''} {player?.playerName} 🔗
       </a>
-      <ImageComponent imageUrl={player.image} title={player.title} />
+      <ImageComponent imageUrl={player?.playerImageURL} title={player?.playerName} />
       <ul className="footer-line">
         <li className="prize">
-          <b>Prize:</b>{' '}
+          <b>Earnings:</b>{' '}
           <span>
-            <FormattedNumber value={player.earnings} style={'currency'} currency="USD" />
+            <FormattedNumber value={player?.prize} style={'currency'} currency="USD" />
           </span>
         </li>
         <li>
-          <b>Best achievement:</b> 🏆 {player.bestAchievement}
-        </li>
-        <li>
-          <Link to={`/game-details/${player.gameId}`} className={'styled-btn'}>
-            {player.title}
+          <Link to={`/game-details/${player?.playerGameID}`} className={'styled-btn'}>
+            {player?.playerGameName}
           </Link>
         </li>
       </ul>
