@@ -65,6 +65,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#hasDevelopedGame -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#hasDevelopedGame">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#hasGenreName -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#hasGenreName">
@@ -928,6 +938,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#1c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#1"/>
         <video-games-v2:CompanyID>1c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://1000logos.net/wp-content/uploads/2021/12/Mojang-logo.jpg</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Mojang Studios was founded by the independent video game designer Markus Persson in 2009 as Mojang Specifications for Minecraft&apos;s development. The studio inherited its name from another video game venture Persson had left two years prior. Following the game&apos;s initial release, Persson, in conjunction with Jakob Porsér, incorporated the business as Mojang AB in late 2010, and they hired Carl Manneh as the company&apos;s chief executive officer. Other early hires included Daniel Kaplan and Jens Bergensten. Minecraft became highly successful, giving Mojang sustained growth. With a desire to move on from the game, Persson offered to sell his share in Mojang, and the company was acquired by Microsoft in November 2014. Persson, Porsér, and Manneh subsequently left Mojang, with Jonas Mårtensson replacing Manneh as CEO. In May 2020, Mojang was rebranded as Mojang Studios.</video-games-v2:Description>
@@ -966,6 +977,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#10c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#11"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#71"/>
         <video-games-v2:CompanyID>10c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://images.pushsquare.com/bf2b45f57e880/take-two-interactive.large.jpg</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Take-Two Interactive Software, Inc. is an American video game holding company based in New York City founded by Ryan Brant in September 1993. The company owns two major publishing labels, Rockstar Games and 2K, which operate internal game development studios.</video-games-v2:Description>
@@ -1030,6 +1043,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#11c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#12"/>
         <video-games-v2:CompanyID>11c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://upload.wikimedia.org/wikipedia/en/0/05/PlatinumGames_Inc..png</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>PlatinumGames Inc. is a Japanese video game developer that was founded in October 2007 as result of a merger between two companies, Seeds Inc. and Odd Inc. Shinji Mikami, Atsushi Inaba, and Hideki Kamiya founded Seeds Inc. after the closure of Capcom&apos;s Clover Studio, while Odd Inc. was founded by Tatsuya Minami.</video-games-v2:Description>
@@ -1068,6 +1082,10 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#12c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#16"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#47"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#48"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#79"/>
         <video-games-v2:CompanyID>12c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/SEGA_logo.svg/640px-SEGA_logo.svg.png</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Sega Corporation is a Japanese multinational video game and entertainment company headquartered in Shinagawa, Tokyo. Its international branches, Sega of America and Sega Europe, are headquartered in Irvine, California, and London, respectively.</video-games-v2:Description>
@@ -1105,6 +1123,11 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#13c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#19"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#23"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#24"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#28"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#36"/>
         <video-games-v2:CompanyID>13c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://1000logos.net/wp-content/uploads/2020/09/Capcom-logo.png</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Capcom Co., Ltd. is a Japanese video game company. It has created a number of multi-million-selling game franchises, with its most commercially successful being Resident Evil, Monster Hunter, Street Fighter, Mega Man, Devil May Cry, Dead Rising, Ace Attorney, and Marvel vs. Capcom.</video-games-v2:Description>
@@ -1142,8 +1165,10 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#14c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#20"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#74"/>
         <video-games-v2:CompanyID>14c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://static.wikia.nocookie.net/sony-playstation/images/6/61/InsomniacGamesLogo3.png/revision/latest?cb=20200828071731</video-games-v2:CompanyLogoURL>
+        <video-games-v2:CompanyLogoURL>https://insomniac.games/wp-content/uploads/2017/09/new-insomniacgames-logo.jpg</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Insomniac Games, Inc. is an American video game developer based in Burbank, California and part of PlayStation Studios. It was founded in 1994 by Ted Price as Xtreme Software, and was renamed Insomniac Games a year later.</video-games-v2:Description>
         <video-games-v2:Location>Burbank, California, USA</video-games-v2:Location>
         <video-games-v2:Name>Insomniac Games</video-games-v2:Name>
@@ -1179,6 +1204,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#15c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#21"/>
         <video-games-v2:CompanyID>15c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://ssb.wiki.gallery/images/9/9a/Sora_Ltd._Logo.svg</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Sora Ltd. is a video game developer founded by Masahiro Sakurai, mainly to develop Super Smash Bros. Brawl. It has just 2 members, with Brawl also being developed with some &quot;borrowed&quot; Game Arts employees.</video-games-v2:Description>
@@ -1217,6 +1243,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#16c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#22"/>
         <video-games-v2:CompanyID>16c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://krafton.com/wp-content/uploads/2021/07/KRAFTON_OG_Image.png</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Crafton Inc. is a South Korean video game holding company based in Bundang-gu, Seongnam. It was created in November 2018 to serve as the parent company for Bluehole, founded by Chang-Byung-gyu in Seoul in March 2007, and its subsidiaries.</video-games-v2:Description>
@@ -1254,6 +1281,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#17c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#22"/>
         <video-games-v2:CompanyID>17c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://archive.esportsobserver.com/wp-content/uploads/2019/01/pubg-corp.png</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>PUBG: Battlegrounds (previously known as PlayerUnknown&apos;s Battlegrounds) is a battle royale game developed by PUBG Studios and published by Crafton. The game, which was inspired by the Japanese film Battle Royale (2000), is based on previous mods created by Brendan &quot;PlayerUnknown&quot; Greene for other games, and expanded into a standalone game under Greene&apos;s creative direction. It is the first game in the PUBG Universe series.
@@ -1344,6 +1372,8 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#2c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#2"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#4"/>
         <video-games-v2:CompanyID>2c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://1000logos.net/wp-content/uploads/2023/03/Valve-logo.jpg</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Valve Corporation, also known as Valve Software, is an American video game developer, publisher, and digital distribution company headquartered in Bellevue, Washington.</video-games-v2:Description>
@@ -1625,6 +1655,14 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#3c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#14"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#18"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#21"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#3"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#32"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#50"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#62"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#70"/>
         <video-games-v2:CompanyID>3c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Nintendo.svg/1200px-Nintendo.svg.png</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Nintendo Co., Ltd. is a Japanese multinational video game company headquartered in Kyoto. It develops, publishes and releases both video games and video game consoles. Nintendo was founded in 1889 as Nintendo Koppai by craftsman Fusajiro Yamauchi and originally produced handmade hanafuda playing cards.</video-games-v2:Description>
@@ -1902,6 +1940,7 @@ Upon release, Counter-Strike 2 received generally favorable reviews from critics
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#4c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#5"/>
         <video-games-v2:CompanyID>4c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://www.videogameschronicle.com/files/2022/02/bandai-namco-logo.jpg</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Bandai Namco Entertainment Inc. is a Japanese multinational video game publisher owned by Bandai Namco Holdings. It was founded in 2006 as Namco Bandai Games Inc, following the 2005 merger of Namco and Bandai. Namco acquired Bandai&apos;s video game business division through a corporate split. In 2009, Bandai Namco Games absorbed Bandai Networks. It is headquartered in Minato, Tokyo.
@@ -2187,6 +2226,9 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#5c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#5"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#7"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#80"/>
         <video-games-v2:CompanyID>5c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://gamingbolt.com/wp-content/uploads/2019/03/fromsoftware-logo.jpg</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>FromSoftware, Inc. is a Japanese video game development and publishing company. It was founded by Naotoshi Zin in Tokyo on November 1, 1986. Initially a developer of business software, the company released their first video game, King&apos;s Field, for the PlayStation in 1994.</video-games-v2:Description>
@@ -2463,6 +2505,7 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#6c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#6"/>
         <video-games-v2:CompanyID>6c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://i.kym-cdn.com/entries/icons/facebook/000/038/355/1885987_170x100.jpg</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Robert F. &quot;Toby&quot; Fox is an American video game developer and composer. He is known for developing the role-playing video games Undertale and Deltarune for which the former garnered acclaim and has received nominations for a British Academy Game Award, three Game Awards and D.I.C.E. Awards.</video-games-v2:Description>
@@ -2735,6 +2778,12 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#7c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#25"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#35"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#7"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#74"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#82"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#88"/>
         <video-games-v2:CompanyID>7c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Sony_Computer_Entertainment_logo_%28No_Trademark%29.svg/200px-Sony_Computer_Entertainment_logo_%28No_Trademark%29.svg.png</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Sony Interactive Entertainment LLC is a multinational video game and digital entertainment company owned by Sony. SIE primarily operates the PlayStation brand of video game consoles and products. In 1993, Sony and Sony Music Entertainment Japan jointly established Sony Computer Entertainment Inc. in Tokyo.</video-games-v2:Description>
@@ -3018,6 +3067,9 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#8c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#10"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#77"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#95"/>
         <video-games-v2:CompanyID>8c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://cdn.neowin.com/news/images/uploaded/2020/07/1595446530_ubisoft_horizontal_logo_black_story.jpg</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Ubisoft Entertainment SA is a French video game publisher headquartered in Saint-Mandé with development studios across the world. Its video game franchises include Assassin&apos;s Creed, Far Cry, For Honor, Just Dance, Prince of Persia, Rabbids, Rayman, Tom Clancy&apos;s, and Watch Dogs. </video-games-v2:Description>
@@ -3277,6 +3329,8 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#9c">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#11"/>
+        <video-games-v2:hasDevelopedGame rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#41"/>
         <video-games-v2:CompanyID>9c</video-games-v2:CompanyID>
         <video-games-v2:CompanyLogoURL>https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/1200px-Rockstar_Games_Logo.svg.png</video-games-v2:CompanyLogoURL>
         <video-games-v2:Description>Rockstar Games, Inc. is an American video game publisher based in New York City. The company was established in December 1998 as a subsidiary of Take-Two Interactive, using the assets Take-Two had previously acquired from BMG Interactive.</video-games-v2:Description>
