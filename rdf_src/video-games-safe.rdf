@@ -27,7 +27,7 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#gameDevelopedBy">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Team"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
     </owl:ObjectProperty>
     
@@ -253,40 +253,10 @@
     
 
 
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#CompanyID -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#CompanyID">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#CompanyLogoURL -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#CompanyLogoURL">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#CoverURL -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#CoverURL">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Description -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Description">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -323,41 +293,11 @@
     
 
 
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Location -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Location">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Name -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Name">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#NumberOfReviews -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#NumberOfReviews">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#OfficialSitURL -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#OfficialSitURL">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 
@@ -533,12 +473,6 @@
     <owl:Class rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Achievements">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player"/>
     </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
     
 
 
@@ -743,6 +677,26 @@
     
 
 
+    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Minecraft -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Minecraft">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
+        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#MojangStudios"/>
+        <video-games-v2:Id xml:lang="en">1</video-games-v2:Id>
+        <video-games-v2:Title xml:lang="en">Minecraft</video-games-v2:Title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#MojangStudios -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#MojangStudios">
+        <video-games-v2:Id xml:lang="en">1</video-games-v2:Id>
+        <video-games-v2:Title xml:lang="en">Mojang Studios</video-games-v2:Title>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player1">
@@ -903,7 +857,6 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#1">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#1c"/>
         <video-games-v2:hasBestPlayer rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player1"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://image.api.playstation.com/vulcan/img/cfn/11307x4B5WLoVoIUtdewG4uJ_YuDRTwBxQy0qP8ylgazLLc01PBxbsFG1pGOWmqhZsxnNkrU3GXbdXIowBAstzlrhtQ4LCI4.png</video-games-v2:CoverURL>
@@ -924,25 +877,10 @@
     
 
 
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#1c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#1c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>1c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://1000logos.net/wp-content/uploads/2021/12/Mojang-logo.jpg</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Mojang Studios was founded by the independent video game designer Markus Persson in 2009 as Mojang Specifications for Minecraft&apos;s development. The studio inherited its name from another video game venture Persson had left two years prior. Following the game&apos;s initial release, Persson, in conjunction with Jakob Porsér, incorporated the business as Mojang AB in late 2010, and they hired Carl Manneh as the company&apos;s chief executive officer. Other early hires included Daniel Kaplan and Jens Bergensten. Minecraft became highly successful, giving Mojang sustained growth. With a desire to move on from the game, Persson offered to sell his share in Mojang, and the company was acquired by Microsoft in November 2014. Persson, Porsér, and Manneh subsequently left Mojang, with Jonas Mårtensson replacing Manneh as CEO. In May 2020, Mojang was rebranded as Mojang Studios.</video-games-v2:Description>
-        <video-games-v2:Location>Stockholm, Sweden</video-games-v2:Location>
-        <video-games-v2:Name>Mojang Studios</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.minecraft.net/en-us</video-games-v2:OfficialSitURL>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#10 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#10">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#8c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/449BBgnc3Q1ha2IN9rh3bR/234dfb6f242b302e411a172816e71286/ACEC_Keyart_00_00_00_mobile.jpg</video-games-v2:CoverURL>
         <video-games-v2:Id>10</video-games-v2:Id>
@@ -958,20 +896,6 @@
         <video-games-v2:Title>Assassin&apos;s Creed</video-games-v2:Title>
         <video-games-v2:Top>9</video-games-v2:Top>
         <video-games-v2:TrailerURL>https://www.youtube.com/watch?v=x55lAlFtXmw&amp;ab_channel=Ubisoft</video-games-v2:TrailerURL>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#10c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#10c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>10c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://images.pushsquare.com/bf2b45f57e880/take-two-interactive.large.jpg</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Take-Two Interactive Software, Inc. is an American video game holding company based in New York City founded by Ryan Brant in September 1993. The company owns two major publishing labels, Rockstar Games and 2K, which operate internal game development studios.</video-games-v2:Description>
-        <video-games-v2:Location>New York City, New York, USA</video-games-v2:Location>
-        <video-games-v2:Name>Take-Two Interactive</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.take2games.com/</video-games-v2:OfficialSitURL>
     </owl:NamedIndividual>
     
 
@@ -1005,8 +929,6 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#11">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#10c"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#9c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://image.api.playstation.com/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png</video-games-v2:CoverURL>
         <video-games-v2:Id>11</video-games-v2:Id>
@@ -1026,25 +948,10 @@
     
 
 
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#11c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#11c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>11c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://upload.wikimedia.org/wikipedia/en/0/05/PlatinumGames_Inc..png</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>PlatinumGames Inc. is a Japanese video game developer that was founded in October 2007 as result of a merger between two companies, Seeds Inc. and Odd Inc. Shinji Mikami, Atsushi Inaba, and Hideki Kamiya founded Seeds Inc. after the closure of Capcom&apos;s Clover Studio, while Odd Inc. was founded by Tatsuya Minami.</video-games-v2:Description>
-        <video-games-v2:Location> Osaka, Japan</video-games-v2:Location>
-        <video-games-v2:Name>PlatinumGames</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.platinumgames.com/</video-games-v2:OfficialSitURL>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#12 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#12">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#11c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://image.api.playstation.com/cdn/EP0082/CUSA04480_00/P4ZghxHW2EEiwxim3ZZIG28aJB8LgebN.png</video-games-v2:CoverURL>
         <video-games-v2:Id>12</video-games-v2:Id>
@@ -1060,20 +967,6 @@
         <video-games-v2:Title>NieR: Automata</video-games-v2:Title>
         <video-games-v2:Top>11</video-games-v2:Top>
         <video-games-v2:TrailerURL>https://www.youtube.com/watch?v=wJxNhJ8fjFk&amp;ab_channel=PlayStation</video-games-v2:TrailerURL>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#12c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#12c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>12c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/SEGA_logo.svg/640px-SEGA_logo.svg.png</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Sega Corporation is a Japanese multinational video game and entertainment company headquartered in Shinagawa, Tokyo. Its international branches, Sega of America and Sega Europe, are headquartered in Irvine, California, and London, respectively.</video-games-v2:Description>
-        <video-games-v2:Location>Tokyo, Japan</video-games-v2:Location>
-        <video-games-v2:Name>Sega</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.sega.com/</video-games-v2:OfficialSitURL>
     </owl:NamedIndividual>
     
 
@@ -1101,20 +994,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#13c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#13c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>13c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://1000logos.net/wp-content/uploads/2020/09/Capcom-logo.png</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Capcom Co., Ltd. is a Japanese video game company. It has created a number of multi-million-selling game franchises, with its most commercially successful being Resident Evil, Monster Hunter, Street Fighter, Mega Man, Devil May Cry, Dead Rising, Ace Attorney, and Marvel vs. Capcom.</video-games-v2:Description>
-        <video-games-v2:Location>Osaka, Japan</video-games-v2:Location>
-        <video-games-v2:Name>Capcom</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.capcom.com/</video-games-v2:OfficialSitURL>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#14 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#14">
@@ -1134,20 +1013,6 @@
         <video-games-v2:Title>Super Mario Odyssey</video-games-v2:Title>
         <video-games-v2:Top>13</video-games-v2:Top>
         <video-games-v2:TrailerURL>https://www.youtube.com/watch?v=wGQHQc_3ycE&amp;ab_channel=NintendoofAmerica</video-games-v2:TrailerURL>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#14c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#14c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>14c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://static.wikia.nocookie.net/sony-playstation/images/6/61/InsomniacGamesLogo3.png/revision/latest?cb=20200828071731</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Insomniac Games, Inc. is an American video game developer based in Burbank, California and part of PlayStation Studios. It was founded in 1994 by Ted Price as Xtreme Software, and was renamed Insomniac Games a year later.</video-games-v2:Description>
-        <video-games-v2:Location>Burbank, California, USA</video-games-v2:Location>
-        <video-games-v2:Name>Insomniac Games</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://insomniac.games/</video-games-v2:OfficialSitURL>
     </owl:NamedIndividual>
     
 
@@ -1175,25 +1040,10 @@
     
 
 
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#15c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#15c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>15c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://ssb.wiki.gallery/images/9/9a/Sora_Ltd._Logo.svg</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Sora Ltd. is a video game developer founded by Masahiro Sakurai, mainly to develop Super Smash Bros. Brawl. It has just 2 members, with Brawl also being developed with some &quot;borrowed&quot; Game Arts employees.</video-games-v2:Description>
-        <video-games-v2:Location>Tokyo, Japan</video-games-v2:Location>
-        <video-games-v2:Name>Sora</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.ssbwiki.com/Sora_Ltd.</video-games-v2:OfficialSitURL>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#16 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#16">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#12c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://www.trustedreviews.com/wp-content/uploads/sites/54/2017/01/yakuza-2-3-920x518.jpg</video-games-v2:CoverURL>
         <video-games-v2:Id>16</video-games-v2:Id>
@@ -1209,20 +1059,6 @@
         <video-games-v2:Title>Yakuza 0</video-games-v2:Title>
         <video-games-v2:Top>15</video-games-v2:Top>
         <video-games-v2:TrailerURL>https://www.youtube.com/watch?v=qGYQVblzl_Y&amp;ab_channel=PlayStation</video-games-v2:TrailerURL>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#16c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#16c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>16c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://krafton.com/wp-content/uploads/2021/07/KRAFTON_OG_Image.png</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Crafton Inc. is a South Korean video game holding company based in Bundang-gu, Seongnam. It was created in November 2018 to serve as the parent company for Bluehole, founded by Chang-Byung-gyu in Seoul in March 2007, and its subsidiaries.</video-games-v2:Description>
-        <video-games-v2:Location>Seoul, South Korea</video-games-v2:Location>
-        <video-games-v2:Name>KRAFTON</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://krafton.com/en/</video-games-v2:OfficialSitURL>
     </owl:NamedIndividual>
     
 
@@ -1250,26 +1086,10 @@
     
 
 
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#17c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#17c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>17c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://archive.esportsobserver.com/wp-content/uploads/2019/01/pubg-corp.png</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>PUBG: Battlegrounds (previously known as PlayerUnknown&apos;s Battlegrounds) is a battle royale game developed by PUBG Studios and published by Crafton. The game, which was inspired by the Japanese film Battle Royale (2000), is based on previous mods created by Brendan &quot;PlayerUnknown&quot; Greene for other games, and expanded into a standalone game under Greene&apos;s creative direction. It is the first game in the PUBG Universe series.
-
-The game is played from either a third-person or first-person perspective. In the game, up to one hundred players parachute onto an island where they scavenge for weapons and equipment to kill other players while avoiding getting killed themselves. The available safe area of the game&apos;s map decreases in size over time, directing surviving players into an ever tightening space to force encounters. The last surviving player (or team) wins the round.</video-games-v2:Description>
-        <video-games-v2:Name>PUBG Corp</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.pubg.com/en-eu/events/unknown</video-games-v2:OfficialSitURL>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#18 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#18">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#3c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/wii_24/SI_Wii_SuperMarioGalaxy_image1600w.jpg</video-games-v2:CoverURL>
         <video-games-v2:Id>18</video-games-v2:Id>
@@ -1293,7 +1113,6 @@ The game is played from either a third-person or first-person perspective. In th
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#19">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#13c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_download_software_1/2x1_NSwitchDS_ResidentEvil2Cloud_image1280w.jpg</video-games-v2:CoverURL>
         <video-games-v2:Id>19</video-games-v2:Id>
@@ -1317,7 +1136,6 @@ The game is played from either a third-person or first-person perspective. In th
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#2">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#2c"/>
         <video-games-v2:hasBestPlayer rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player2"/>
         <video-games-v2:BestAchievement>Best Dota 2 Player </video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://img.redbull.com/images/q_auto,f_auto/redbullcom/2014/10/09/1331683687434_2/dota-2-is-unlike-most-games-of-its-kind</video-games-v2:CoverURL>
@@ -1340,25 +1158,10 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
     
 
 
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#2c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#2c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>2c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://1000logos.net/wp-content/uploads/2023/03/Valve-logo.jpg</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Valve Corporation, also known as Valve Software, is an American video game developer, publisher, and digital distribution company headquartered in Bellevue, Washington.</video-games-v2:Description>
-        <video-games-v2:Location>Bellevue, Washington, USA</video-games-v2:Location>
-        <video-games-v2:Name>Valve Corporation</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.valvesoftware.com/en/</video-games-v2:OfficialSitURL>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#20 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#20">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#14c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://image.api.playstation.com/vulcan/ap/rnd/202009/3021/B2aUYFC0qUAkNnjbTHRyhrg3.png</video-games-v2:CoverURL>
         <video-games-v2:Id>20</video-games-v2:Id>
@@ -1382,8 +1185,6 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#21">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#15c"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#3c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_SuperSmashBrosUltimate_02_bannerXS.jpg</video-games-v2:CoverURL>
         <video-games-v2:Id>21</video-games-v2:Id>
@@ -1407,8 +1208,6 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#22">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#16c"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#17c"/>
         <video-games-v2:hasBestPlayer rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player4"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://image.api.playstation.com/vulcan/ap/rnd/202309/0406/d8836a7efd114c7302d116f5b1242ca8c50bf8f137f6a71d.png</video-games-v2:CoverURL>
@@ -1433,7 +1232,6 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#23">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#13c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>23</video-games-v2:Id>
@@ -1457,7 +1255,6 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#24">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#13c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>24</video-games-v2:Id>
@@ -1481,7 +1278,6 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#25">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#7c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>25</video-games-v2:Id>
@@ -1528,7 +1324,6 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#27">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#3c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>27</video-games-v2:Id>
@@ -1601,7 +1396,6 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#3">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#3c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://www.zelda.com/breath-of-the-wild/assets/icons/BOTW-Share_icon.jpg</video-games-v2:CoverURL>
         <video-games-v2:Id>3</video-games-v2:Id>
@@ -1617,20 +1411,6 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
         <video-games-v2:Title>The Legend of Zelda: Breath of the Wild</video-games-v2:Title>
         <video-games-v2:Top>3</video-games-v2:Top>
         <video-games-v2:TrailerURL>https://www.youtube.com/watch?v=zw47_q9wbBE&amp;ab_channel=NintendoofAmerica</video-games-v2:TrailerURL>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#3c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#3c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>3c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Nintendo.svg/1200px-Nintendo.svg.png</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Nintendo Co., Ltd. is a Japanese multinational video game company headquartered in Kyoto. It develops, publishes and releases both video games and video game consoles. Nintendo was founded in 1889 as Nintendo Koppai by craftsman Fusajiro Yamauchi and originally produced handmade hanafuda playing cards.</video-games-v2:Description>
-        <video-games-v2:Location>Kyoto, Japan</video-games-v2:Location>
-        <video-games-v2:Name>Nintendo</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.nintendo.com/us/</video-games-v2:OfficialSitURL>
     </owl:NamedIndividual>
     
 
@@ -1754,7 +1534,6 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#35">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#7c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>35</video-games-v2:Id>
@@ -1873,7 +1652,6 @@ In &quot;Dota 2,&quot; two teams of five players compete to destroy a large stru
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#4">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#2c"/>
         <video-games-v2:hasBestPlayer rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player3"/>
         <video-games-v2:BestAchievement>Top Counter Strike Player</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://www.sportcal.com/wp-content/uploads/sites/32/2023/05/main645e17a39ff80.png</video-games-v2:CoverURL>
@@ -1894,22 +1672,6 @@ Upon release, Counter-Strike 2 received generally favorable reviews from critics
         <video-games-v2:Title>Counter Strike 2</video-games-v2:Title>
         <video-games-v2:Top>4</video-games-v2:Top>
         <video-games-v2:TrailerURL>https://www.youtube.com/watch?v=nSE38xjMLqE&amp;ab_channel=Valve</video-games-v2:TrailerURL>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#4c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#4c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>4c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://www.videogameschronicle.com/files/2022/02/bandai-namco-logo.jpg</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Bandai Namco Entertainment Inc. is a Japanese multinational video game publisher owned by Bandai Namco Holdings. It was founded in 2006 as Namco Bandai Games Inc, following the 2005 merger of Namco and Bandai. Namco acquired Bandai&apos;s video game business division through a corporate split. In 2009, Bandai Namco Games absorbed Bandai Networks. It is headquartered in Minato, Tokyo.
-
-Development operations were spun off into a new company in 2012, Namco Bandai Studios (now called Bandai Namco Studios), to help create faster development time and tighter cohesion between development teams. Namco Bandai Games was renamed Bandai Namco Games in 2014 and again to Bandai Namco Entertainment a year later.</video-games-v2:Description>
-        <video-games-v2:Location>Tokyo, Japan</video-games-v2:Location>
-        <video-games-v2:Name>Bandai Namco Entertainment</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.bandainamcoent.com/</video-games-v2:OfficialSitURL>
     </owl:NamedIndividual>
     
 
@@ -1964,7 +1726,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#42">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#7c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>42</video-games-v2:Id>
@@ -2083,7 +1844,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#47">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#12c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>47</video-games-v2:Id>
@@ -2110,7 +1870,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#48">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#12c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>48</video-games-v2:Id>
@@ -2163,7 +1922,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#5">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#4c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://image.api.playstation.com/vulcan/ap/rnd/202108/0410/2odx6gpsgR6qQ16YZ7YkEt2B.png</video-games-v2:CoverURL>
         <video-games-v2:Id>5</video-games-v2:Id>
@@ -2179,20 +1937,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
         <video-games-v2:Title>Elden Ring</video-games-v2:Title>
         <video-games-v2:Top>5</video-games-v2:Top>
         <video-games-v2:TrailerURL>https://www.youtube.com/watch?v=AKXiKBnzpBQ&amp;ab_channel=GameSpot</video-games-v2:TrailerURL>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#5c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#5c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>5c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://gamingbolt.com/wp-content/uploads/2019/03/fromsoftware-logo.jpg</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>FromSoftware, Inc. is a Japanese video game development and publishing company. It was founded by Naotoshi Zin in Tokyo on November 1, 1986. Initially a developer of business software, the company released their first video game, King&apos;s Field, for the PlayStation in 1994.</video-games-v2:Description>
-        <video-games-v2:Location>Tokyo, Japan</video-games-v2:Location>
-        <video-games-v2:Name>FromSoftware Inc.</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.fromsoftware.jp/ww/</video-games-v2:OfficialSitURL>
     </owl:NamedIndividual>
     
 
@@ -2439,7 +2183,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#6">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#6c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL xml:lang="en">https://media.proprofs.com/images/QM/user_images/2503852/New%20Project%20(8)(135).jpg</video-games-v2:CoverURL>
         <video-games-v2:Id>6</video-games-v2:Id>
@@ -2455,20 +2198,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
         <video-games-v2:Title>Undertale</video-games-v2:Title>
         <video-games-v2:Top>6</video-games-v2:Top>
         <video-games-v2:TrailerURL>https://www.youtube.com/watch?v=1Hojv0m3TqA&amp;ab_channel=FwugRadiation</video-games-v2:TrailerURL>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#6c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#6c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>6c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://i.kym-cdn.com/entries/icons/facebook/000/038/355/1885987_170x100.jpg</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Robert F. &quot;Toby&quot; Fox is an American video game developer and composer. He is known for developing the role-playing video games Undertale and Deltarune for which the former garnered acclaim and has received nominations for a British Academy Game Award, three Game Awards and D.I.C.E. Awards.</video-games-v2:Description>
-        <video-games-v2:Location>United States</video-games-v2:Location>
-        <video-games-v2:Name>Toby Fox</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://twitter.com/tobyfox</video-games-v2:OfficialSitURL>
     </owl:NamedIndividual>
     
 
@@ -2710,8 +2439,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#7">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#5c"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#7c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>https://image.api.playstation.com/vulcan/img/rnd/202010/2614/NVmnBXze9ElHzU6SmykrJLIV.png</video-games-v2:CoverURL>
         <video-games-v2:Id>7</video-games-v2:Id>
@@ -2727,20 +2454,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
         <video-games-v2:Title>Bloodborne</video-games-v2:Title>
         <video-games-v2:Top>7</video-games-v2:Top>
         <video-games-v2:TrailerURL>https://www.youtube.com/watch?v=2Crk_GpxGQE&amp;ab_channel=PlayStation</video-games-v2:TrailerURL>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#7c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#7c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>7c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Sony_Computer_Entertainment_logo_%28No_Trademark%29.svg/200px-Sony_Computer_Entertainment_logo_%28No_Trademark%29.svg.png</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Sony Interactive Entertainment LLC is a multinational video game and digital entertainment company owned by Sony. SIE primarily operates the PlayStation brand of video game consoles and products. In 1993, Sony and Sony Music Entertainment Japan jointly established Sony Computer Entertainment Inc. in Tokyo.</video-games-v2:Description>
-        <video-games-v2:Location>San Mateo, California, USA</video-games-v2:Location>
-        <video-games-v2:Name>Sony Computer Entertainment</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://sonyinteractive.com/en/</video-games-v2:OfficialSitURL>
     </owl:NamedIndividual>
     
 
@@ -2851,8 +2564,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#74">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#14c"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#7c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>74</video-games-v2:Id>
@@ -2924,7 +2635,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#77">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#8c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>77</video-games-v2:Id>
@@ -2971,7 +2681,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#79">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#12c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>79</video-games-v2:Id>
@@ -3014,25 +2723,10 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
     
 
 
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#8c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#8c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>8c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://cdn.neowin.com/news/images/uploaded/2020/07/1595446530_ubisoft_horizontal_logo_black_story.jpg</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Ubisoft Entertainment SA is a French video game publisher headquartered in Saint-Mandé with development studios across the world. Its video game franchises include Assassin&apos;s Creed, Far Cry, For Honor, Just Dance, Prince of Persia, Rabbids, Rayman, Tom Clancy&apos;s, and Watch Dogs. </video-games-v2:Description>
-        <video-games-v2:Location>Montreuil, France</video-games-v2:Location>
-        <video-games-v2:Name>Ubisoft</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.ubisoft.com/en-gb/</video-games-v2:OfficialSitURL>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#80 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#80">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#5c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>80</video-games-v2:Id>
@@ -3125,7 +2819,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#84">
         <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <video-games-v2:gameDevelopedBy rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#12c"/>
         <video-games-v2:BestAchievement>yhNf2kluG7Yf0TNl5xGt</video-games-v2:BestAchievement>
         <video-games-v2:CoverURL>http://www.jkosxfjaxd.com</video-games-v2:CoverURL>
         <video-games-v2:Id>84</video-games-v2:Id>
@@ -3269,20 +2962,6 @@ Development operations were spun off into a new company in 2012, Namco Bandai St
         <video-games-v2:Title>S.T.A.L.K.E.R.: Shadow of Chernobyl</video-games-v2:Title>
         <video-games-v2:Top>173</video-games-v2:Top>
         <video-games-v2:TrailerURL>http://www.yaoptzwssl.com</video-games-v2:TrailerURL>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#9c -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#9c">
-        <rdf:type rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Company"/>
-        <video-games-v2:CompanyID>9c</video-games-v2:CompanyID>
-        <video-games-v2:CompanyLogoURL>https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/1200px-Rockstar_Games_Logo.svg.png</video-games-v2:CompanyLogoURL>
-        <video-games-v2:Description>Rockstar Games, Inc. is an American video game publisher based in New York City. The company was established in December 1998 as a subsidiary of Take-Two Interactive, using the assets Take-Two had previously acquired from BMG Interactive.</video-games-v2:Description>
-        <video-games-v2:Location>New York City, New York, USA</video-games-v2:Location>
-        <video-games-v2:Name>Rockstar Games</video-games-v2:Name>
-        <video-games-v2:OfficialSitURL>https://www.rockstargames.com/</video-games-v2:OfficialSitURL>
     </owl:NamedIndividual>
     
 

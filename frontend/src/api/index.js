@@ -37,6 +37,15 @@ export const getBestPlayersListAPI = async (searchTerm = '') => {
   }
 };
 
+export const getBestCompaniesListAPI = async () => {
+  try {
+    const response = await api.get('/companies');
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
 export const getGameDetailsAPI = async (gameId) => {
   try {
     const response = await api.get(`/game/${gameId}`);
@@ -49,6 +58,15 @@ export const getGameDetailsAPI = async (gameId) => {
 export const getBestPlayerDetailsAPI = async (gameId) => {
   try {
     const response = await api.get(`/best-players-details/${gameId}`);
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+export const getCompanyDetailsAPI = async (companyId) => {
+  try {
+    const response = await api.get(`/company-details/${companyId}`);
     return response.data;
   } catch (error) {
     return Promise.reject(error);

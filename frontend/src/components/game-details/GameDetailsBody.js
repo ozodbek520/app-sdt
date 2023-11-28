@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import useDateFormatter from '../../hooks/useDateFormatter';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const StyledDiv = styled.div`
   .footer-line {
@@ -64,6 +64,19 @@ const GameDetailsBody = ({ gameDetails }) => {
           👑 Show best player
         </button>
       )}
+      <br />
+      <br />
+      <h5>Developer companies:</h5>
+      <br />
+      <ul className="footer-line">
+        {gameDetails?.developers.map((developer) => (
+          <li key={developer.companyId}>
+            <Link to={`/companies/${developer.companyId}`} className={'styled-btn styled-game-btn'}>
+              {developer.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </StyledDiv>
   );
 };

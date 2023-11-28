@@ -88,6 +88,16 @@ const GlobalStyle = createGlobalStyle`
     color: #424242;
     text-decoration: none;
   }
+  
+  .styled-game-btn {
+    background-color: #FFD33F;
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+  }
+
 
 `;
 

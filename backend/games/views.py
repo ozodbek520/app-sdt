@@ -1,3 +1,8 @@
+from urllib.parse import quote as urlquote
+from SPARQLWrapper import SPARQLWrapper, JSON
+from django.http import JsonResponse
+
+
 # get video games lit
 def get_video_games(request):
     search_query = request.GET.get('search', '')  # Get search query from request parameters
@@ -62,13 +67,13 @@ def get_game_details(request, game_id):
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX game: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
         PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        PREFIX company: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
 
-        SELECT ?Id ?Title ?CoverURL ?TrailerURL ?Summary ?Top ?ReleaseDate ?Ranking ?TimesListed ?NumberOfReviews ?PlayerName WHERE {
+        SELECT ?Id ?Title ?CoverURL ?TrailerURL ?Summary ?Top ?ReleaseDate ?Ranking ?TimesListed ?NumberOfReviews ?PlayerName (GROUP_CONCAT(DISTINCT CONCAT(?DeveloperID, "|", ?DeveloperName); separator=", ") AS ?Developers) WHERE {
           ?x game:Id ?IdString .
           BIND(xsd:integer(?IdString) AS ?Id)
           ?x game:Title ?Title .
           ?x game:CoverURL ?CoverURL .
-          ?x game:TrailerURL ?TrailerURL .
           ?x game:TrailerURL ?TrailerURL .
           ?x game:Summary ?Summary .
           ?x game:Top ?Top .
@@ -77,9 +82,15 @@ def get_game_details(request, game_id):
           ?x game:TimesListed ?TimesListed .
           ?x game:NumberOfReviews ?NumberOfReviews .
           ?x game:PlayerName ?PlayerName .
+          OPTIONAL {
+            ?x game:gameDevelopedBy ?dev .
+            ?dev company:CompanyID ?DeveloperID .
+            ?dev company:Name ?DeveloperName .
+          }
           FILTER(xsd:integer(?IdString) = %d)
-        } ORDER BY ?Id
-    """ % int(game_id)  # Inject game ID into SPARQL FILTER
+        } GROUP BY ?Id ?Title ?CoverURL ?TrailerURL ?Summary ?Top ?ReleaseDate ?Ranking ?TimesListed ?NumberOfReviews ?PlayerName
+        ORDER BY ?Id
+    """ % int(game_id)
 
     # Query RDF data using SPARQL
     sparql = SPARQLWrapper("http://localhost:3030/video-games-v2/query")
@@ -90,6 +101,14 @@ def get_game_details(request, game_id):
     # Process SPARQL results and return as JSON response
     game_data = None
     for result in results["results"]["bindings"]:
+        developers_raw = result.get("Developers", {}).get("value", "").split(", ")
+        developers = []
+        for dev in developers_raw:
+            if dev:
+                dev_parts = dev.split("|")
+                if len(dev_parts) == 2:
+                    developers.append({"companyId": dev_parts[0], "name": dev_parts[1]})
+
         game_data = {
             "id": int(result["Id"]["value"]),
             "title": result["Title"]["value"],
@@ -102,6 +121,7 @@ def get_game_details(request, game_id):
             "timesListed": result["TimesListed"]["value"],
             "numberOfReviews": result["NumberOfReviews"]["value"],
             "playerName": result["PlayerName"]["value"],
+            "developers": developers
         }
         break  # Assuming ID is unique, break after finding the first match
 
@@ -162,10 +182,6 @@ def get_best_players(request):
     return JsonResponse(players_data, safe=False)
 
 
-from SPARQLWrapper import SPARQLWrapper, JSON
-from django.http import JsonResponse
-
-
 # get the best player details
 def get_best_player_details(request, game_id):
     if game_id is None:
@@ -219,3 +235,91 @@ def get_best_player_details(request, game_id):
         return JsonResponse(player_details, safe=False)
     else:
         return JsonResponse({"message": "Best player not found for the given game ID"}, status=404)
+
+
+# get companies list
+def get_company_list(request):
+    sparql_query = """
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX company: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
+
+        SELECT ?CompanyID ?Name ?Description ?CompanyLogoURL WHERE {
+          ?comp rdf:type company:Company .
+          ?comp company:CompanyID ?CompanyID .
+          ?comp company:Name ?Name .
+          ?comp company:Description ?Description .
+          ?comp company:CompanyLogoURL ?CompanyLogoURL .
+
+        }
+    """
+
+    # Query RDF data using SPARQL
+    sparql = SPARQLWrapper("http://localhost:3030/video-games-v2/query")
+    sparql.setQuery(sparql_query)
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+
+    # Process SPARQL results and return as JSON response
+    company_data = []
+    for result in results["results"]["bindings"]:
+        company = {
+            "id": result["CompanyID"]["value"],
+            "name": result["Name"]["value"],
+            "description": result["Description"]["value"],
+            "companyLogoURL": result["CompanyLogoURL"]["value"]
+        }
+        company_data.append(company)
+
+    return JsonResponse(company_data, safe=False)
+
+
+# get company details
+def get_company_details(request, company_id):
+    safe_company_id = urlquote(company_id)
+
+    sparql_query = """
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX company: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
+        PREFIX game: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
+
+        SELECT ?CompanyID ?Name ?Description ?CompanyLogoURL ?Location ?OfficialSitURL ?GameID ?GameTitle WHERE {
+          ?comp rdf:type company:Company .
+          ?comp company:CompanyID ?CompanyID .
+          FILTER(str(?CompanyID) = "%s")
+          ?comp company:Name ?Name .
+          ?comp company:Description ?Description .
+          ?comp company:CompanyLogoURL ?CompanyLogoURL .
+          ?comp company:Location ?Location .
+          ?comp company:OfficialSitURL ?OfficialSitURL .
+          OPTIONAL {
+            ?comp company:hasDevelopedGame ?game .
+            ?game game:Id ?GameID .
+            ?game game:Title ?GameTitle .
+          }
+        }
+    """ % safe_company_id
+
+    # Query RDF data using SPARQL
+    sparql = SPARQLWrapper("http://localhost:3030/video-games-v2/query")
+    sparql.setQuery(sparql_query)
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+
+    # Process SPARQL results and return as JSON response
+    if results["results"]["bindings"]:
+        result = results["results"]["bindings"][0]  # Assuming CompanyID is unique
+        company_details = {
+            "id": result["CompanyID"]["value"],
+            "name": result["Name"]["value"],
+            "description": result["Description"]["value"],
+            "companyLogoURL": result["CompanyLogoURL"]["value"],
+            "location": result["Location"]["value"],
+            "officialSiteURL": result["OfficialSitURL"]["value"],
+            "games": [{"id": game["GameID"]["value"], "title": game["GameTitle"]["value"]}
+                      for game in results["results"]["bindings"] if "GameID" in game]
+        }
+        return JsonResponse(company_details, safe=False)
+    else:
+        return JsonResponse({"error": "Company not found"}, status=404)

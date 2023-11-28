@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
+  getBestCompaniesListAPI,
   getBestPlayerDetailsAPI,
   getBestPlayersListAPI,
+  getCompanyDetailsAPI,
   getGameDetailsAPI,
   getVideoGamesListAPI,
 } from '../../api';
@@ -37,11 +39,27 @@ export const fetchBestPlayerDetailsByGameId = createAsyncThunk(
   }
 );
 
+export const fetchBestCompaniesList = createAsyncThunk(
+  'application/fetchBestCompaniesList',
+  async () => {
+    return await getBestCompaniesListAPI();
+  }
+);
+
+export const fetchCompanyDetailsById = createAsyncThunk(
+  'application/fetchCompanyDetailsById',
+  async (id) => {
+    return await getCompanyDetailsAPI(id);
+  }
+);
+
 const initialState = {
   gamesList: [],
   playersList: [],
+  companiesList: [],
   gameDetails: null,
   bestPlayerDetails: null,
+  companyDetails: null,
   currentGamesPage: 1,
   search: {
     game: parsedSearchParams('search_game'),
@@ -110,6 +128,30 @@ const applicationSlice = createSlice({
         state.bestPlayerDetails = action.payload;
       })
       .addCase(fetchBestPlayerDetailsByGameId.rejected, (state, action) => {
+        state.loading = false;
+        state.error = true;
+      })
+      .addCase(fetchBestCompaniesList.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchBestCompaniesList.fulfilled, (state, action) => {
+        state.loading = false;
+        state.companiesList = action.payload;
+      })
+      .addCase(fetchBestCompaniesList.rejected, (state, action) => {
+        state.loading = false;
+        state.error = true;
+      })
+      .addCase(fetchCompanyDetailsById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchCompanyDetailsById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.companyDetails = action.payload;
+      })
+      .addCase(fetchCompanyDetailsById.rejected, (state, action) => {
         state.loading = false;
         state.error = true;
       });

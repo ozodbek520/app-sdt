@@ -88,6 +88,11 @@ function Navbar() {
                     Players
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to={'/companies'} activeclassname="active">
+                    Companies
+                  </NavLink>
+                </li>
               </ul>
               <form className="d-flex" onSubmit={(e) => e.preventDefault()}>
                 <input
