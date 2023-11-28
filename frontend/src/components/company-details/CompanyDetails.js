@@ -95,10 +95,10 @@ const CompanyDetails = () => {
               rel="noreferrer"
               className={'styled-btn'}
             >
-              Website
+              Official website
             </a>
           </li>
-          <li>Location 📍: {companyDetails?.location}</li>
+          <li>Headquarter 📍: {companyDetails?.location}</li>
         </ul>
         <h5>Games list</h5>
         <ul className="footer-line">
