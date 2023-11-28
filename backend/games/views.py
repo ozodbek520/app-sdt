@@ -7,7 +7,7 @@ from django.http import JsonResponse
 def get_video_games(request):
     search_query = request.GET.get('search', '')  # Get search query from request parameters
     page = int(request.GET.get('page', 1))  # Get current page number from request, default is 1
-    limit = 25  # Number of items per page
+    limit = 21  # Number of items per page
     offset = (page - 1) * limit  # Calculate offset
 
     sparql_query = """
