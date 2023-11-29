@@ -12,6 +12,10 @@ const StyledDiv = styled.div`
   padding: 12px;
   background-color: #000;
   border-radius: 10px;
+
+  @media (max-width: 991px) {
+    width: 100%;
+  }
 `;
 
 const StyledChat = styled.div`
@@ -51,6 +55,9 @@ const StyledChatMessageInput = styled.div`
     border: none;
     border-radius: 5px;
     height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -76,6 +83,10 @@ const StyledAiMessageContent = styled.div`
   max-width: 70%;
   padding: 8px;
   border-radius: 10px 10px 10px 0;
+  
+  @media (max-width: 991px) {
+    margin-top: 2rem;
+  }
 
   p:last-child {
     margin-bottom: unset;
@@ -89,6 +100,10 @@ const StyledUserMessageContent = styled.div`
   padding: 8px;
   border-radius: 10px 10px 0 10px;
   margin-top: 8px;
+  
+  @media (max-width: 991px) {
+    margin-top: 2rem;
+  }
 
   p:last-child {
     margin-bottom: unset;

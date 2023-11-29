@@ -10,6 +10,10 @@ const StyledDiv = styled.div`
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   font-size: 24px;
+  
+  @media (max-width: 991px) {
+    margin: 3rem auto 2rem auto;
+  }
 `;
 
 function Header({ title, icon }) {

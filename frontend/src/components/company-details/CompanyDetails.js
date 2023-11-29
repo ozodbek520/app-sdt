@@ -7,6 +7,10 @@ import { fetchCompanyDetailsById } from '../../store/reducers/applicationSlice';
 
 const StyledDiv = styled.div`
   margin-top: 8rem;
+  
+  @media (max-width: 991px) {
+    margin-top: 2rem;
+  }
 
   .card-header {
     display: flex;
