@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import applicationSlice from './reducers/applicationSlice';
+import chatSlice from './reducers/chatSlice';
 
 const store = configureStore({
   reducer: {
-    application: applicationSlice, // Other reducers here
+    application: applicationSlice,
+    chat: chatSlice,
   },
 });
 

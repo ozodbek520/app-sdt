@@ -5,6 +5,7 @@ import GameDetails from '../pages/game-details/game-details';
 import PlayerDetails from '../pages/player-details/player-details';
 import Companies from '../pages/companies/companies';
 import CompanyDetails from '../components/company-details/CompanyDetails';
+import ChatAi from '../pages/chat-ai/chat-ai';
 
 export const CustomRoutes = () => {
   return (
@@ -15,6 +16,7 @@ export const CustomRoutes = () => {
       <Route path="/players" element={<Players />} />
       <Route path="/companies" element={<Companies />} />
       <Route path="/companies/:id" element={<CompanyDetails />} />
+      <Route path="/chat-ai" element={<ChatAi />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

@@ -1,6 +1,18 @@
+import json
+import re
+from json import JSONDecodeError
 from urllib.parse import quote as urlquote
 from SPARQLWrapper import SPARQLWrapper, JSON
 from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+from django.middleware.csrf import get_token
+
+
+# set csrf token
+def set_csrf_token(request):
+    response = JsonResponse({'detail': 'CSRF cookie set'})
+    response.set_cookie('csrftoken', get_token(request))
+    return response
 
 
 # get video games lit
@@ -323,3 +335,134 @@ def get_company_details(request, company_id):
         return JsonResponse(company_details, safe=False)
     else:
         return JsonResponse({"error": "Company not found"}, status=404)
+
+
+# queries for nlt
+def fetch_games(limit):
+    sparql_query = """
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX game: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+        SELECT ?Id ?Title WHERE {
+          ?x game:Id ?IdString .
+          BIND(xsd:integer(?IdString) AS ?Id)
+          ?x game:Title ?Title .
+        } ORDER BY ?Id LIMIT %d
+    """ % limit
+
+    sparql = SPARQLWrapper("http://localhost:3030/video-games-v2/query")
+    sparql.setQuery(sparql_query)
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+
+    games_data = []
+    for result in results["results"]["bindings"]:
+        game = {
+            "id": int(result["Id"]["value"]),
+            "title": result["Title"]["value"],
+        }
+        games_data.append(game)
+
+    return games_data
+
+
+def fetch_players(limit):
+    sparql_query = """
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX player: <http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+        SELECT ?Id ?PlayerName ?PlayerGameName WHERE {
+            ?player rdf:type player:Player .
+            ?player player:Id ?IdString .
+            ?player player:hasPlayerDetails ?details .
+            ?details player:PlayerName ?PlayerName .
+            ?details player:PlayerGameName ?PlayerGameName .
+
+            BIND(xsd:integer(?IdString) AS ?Id)
+        } LIMIT %d
+    """ % limit
+
+    sparql = SPARQLWrapper("http://localhost:3030/video-games-v2/query")
+    sparql.setQuery(sparql_query)
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+
+    players_data = []
+    for result in results["results"]["bindings"]:
+        player = {
+            "id": int(result["Id"]["value"]),
+            "playerName": result["PlayerName"]["value"],
+            "playerGameName": result["PlayerGameName"]["value"],
+        }
+        players_data.append(player)
+
+    return players_data
+
+
+def analyze_text(text):
+    text_lower = text.lower()
+    match_games = re.search(r"(\d+) best games", text_lower)
+    if match_games:
+        number_of_games = int(match_games.group(1))
+        return {"fetch_games": True, "number": number_of_games}
+
+    match_players = re.search(r"(\d+) best players", text_lower)
+    if "best players" in text_lower or "all players" in text_lower:
+        default_number_of_players = 6
+        number_of_players = int(match_players.group(1)) if match_players else default_number_of_players
+        return {"fetch_players": True, "number": number_of_players}
+
+    if any(greeting in text_lower for greeting in ["hello", "hi", "how are you"]):
+        return {"greeting": True}
+
+    if "wassup" in text_lower or "whassup" in text_lower:
+        return {"informal_greeting": True}
+
+    if "thanks" in text_lower or "thank you" in text_lower:
+        return {"gratitude": True}
+
+    return {"no_match": True}
+
+
+@require_http_methods(["POST"])
+def ask_AI(request):
+    try:
+        data = json.loads(request.body)
+        text = data.get("text", "")
+        analysis_results = analyze_text(text)
+
+        if analysis_results.get("fetch_games"):
+            games_list = fetch_games(analysis_results.get("number"))
+            games_text = "Here's a list of {} games:\n".format(len(games_list))
+            for idx, game in enumerate(games_list, start=1):
+                games_text += "{}. {}\n".format(idx, game['title'])
+            return JsonResponse({"message": games_text})
+
+        if analysis_results.get("fetch_players"):
+            players_list = fetch_players(analysis_results.get("number"))
+            players_text = "Here's a list of {} players:\n".format(len(players_list))
+            for idx, player in enumerate(players_list, start=1):
+                players_text += "{}. {} - {}\n".format(idx, player['playerName'], player['playerGameName'])
+
+            return JsonResponse({"message": players_text})
+
+        if analysis_results.get("greeting"):
+            return JsonResponse({"message": "Hi, How can I help you?"})
+
+        if analysis_results.get("informal_greeting"):
+            return JsonResponse({"message": "Hey dude! What can I do for you 😎?"})
+
+        if analysis_results.get("gratitude"):
+            return JsonResponse({"message": "You're welcome! If you have any more questions, feel free to ask 😉."})
+
+        if analysis_results.get("no_match"):
+            return JsonResponse(
+                {"message": "I do not have an answer for this request 🧐.\n Please send another one 🤓"})
+
+        return JsonResponse({"analysis": analysis_results})
+    except JSONDecodeError:
+        return JsonResponse({"error": "Invalid JSON"}, status=400)

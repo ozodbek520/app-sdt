@@ -93,6 +93,11 @@ function Navbar() {
                     Companies
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to={'/chat-ai'} activeclassname="active">
+                    Chat AI 🤖
+                  </NavLink>
+                </li>
               </ul>
               <form className="d-flex" onSubmit={(e) => e.preventDefault()}>
                 <input
