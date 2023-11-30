@@ -9,8 +9,6 @@ import Markdown from '../../components/markdown/Markdown';
 const StyledDiv = styled.div`
   width: 80%;
   margin: 8rem auto 0 auto;
-  padding: 12px;
-  background-color: #000;
   border-radius: 10px;
 
   @media (max-width: 991px) {
