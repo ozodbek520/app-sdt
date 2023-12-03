@@ -55,11 +55,13 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://10.50.131.46:3000",
+    "http://10.50.130.10:3000",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://10.50.131.46:3000",
+    "http://10.50.130.10:3000",
 ]
 
 ROOT_URLCONF = 'backend.urls'

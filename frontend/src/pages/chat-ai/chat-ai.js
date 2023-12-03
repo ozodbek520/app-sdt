@@ -1,10 +1,12 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import CenterBox from '../../UI/CenterBox';
 import styled from 'styled-components';
 import ChatBG from '../../assets/images/chat-background.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUserMessage, askAIandFetchResponses } from '../../store/reducers/chatSlice';
-import Markdown from '../../components/markdown/Markdown';
+import UserMessage from '../../components/chat-ai/UserMessage';
+import AiMessage from '../../components/chat-ai/AiMessage';
+import ChatMessageInput from '../../components/chat-ai/ChatMessageInput';
 
 const StyledDiv = styled.div`
   width: 80%;
@@ -13,6 +15,7 @@ const StyledDiv = styled.div`
 
   @media (max-width: 991px) {
     width: 100%;
+    margin: 3rem auto 0 auto;
   }
 `;
 
@@ -27,85 +30,10 @@ const StyledChat = styled.div`
   flex-direction: column-reverse;
 `;
 
-const StyledChatMessageInput = styled.div`
-  background-color: white;
-  border-radius: 0 0 10px 10px;
-  height: 10%;
-  color: #1f2023;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-
-  textarea {
-    width: 80%;
-    resize: none;
-    outline: none;
-    border: none;
-    padding-right: 8px;
-  }
-
-  button {
-    width: 20%;
-    background-color: #182533;
-    color: #fff;
-    outline: none;
-    box-shadow: none;
-    border: none;
-    border-radius: 5px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
 const StyledChatMessagesBody = styled.div`
   height: 90%;
   overflow: auto;
   padding: 8px;
-`;
-
-const StyledAiMessage = styled.div`
-  display: flex;
-  justify-content: flex-start;
-`;
-const StyledUserMessage = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const StyledAiMessageContent = styled.div`
-  margin-top: 8px;
-  background-color: white;
-  color: #1f2023;
-  max-width: 70%;
-  padding: 8px;
-  border-radius: 10px 10px 10px 0;
-  
-  @media (max-width: 991px) {
-    margin-top: 2rem;
-  }
-
-  p:last-child {
-    margin-bottom: unset;
-  }
-`;
-
-const StyledUserMessageContent = styled.div`
-  background-color: #1f2023;
-  color: #fff;
-  max-width: 70%;
-  padding: 8px;
-  border-radius: 10px 10px 0 10px;
-  margin-top: 8px;
-  
-  @media (max-width: 991px) {
-    margin-top: 2rem;
-  }
-
-  p:last-child {
-    margin-bottom: unset;
-  }
 `;
 
 const ChatAi = () => {
@@ -146,45 +74,36 @@ const ChatAi = () => {
       handleSubmit(e);
     }
   };
+  const Message = memo(({ message, isUserMessage }) => {
+    if (isUserMessage) {
+      return <UserMessage message={message} />;
+    }
+    return <AiMessage message={message} />;
+  });
 
   const renderMessages = () => {
-    if (messagesList?.length === 0) return null;
-    return messagesList.map((message, index) => {
-      if (message?.userMessage) {
-        return (
-          <StyledUserMessage key={index}>
-            <StyledUserMessageContent>
-              <Markdown className="markdown" value={message?.userMessage} />
-            </StyledUserMessageContent>
-          </StyledUserMessage>
-        );
-      }
-      if (message?.aiMessage) {
-        return (
-          <StyledAiMessage key={index}>
-            <StyledAiMessageContent>
-              <Markdown className="markdown" value={message?.aiMessage} />
-            </StyledAiMessageContent>
-          </StyledAiMessage>
-        );
-      }
-    });
+    if (!messagesList || messagesList.length === 0) return null;
+    return messagesList.map((message, index) => (
+      <Message
+        key={index}
+        message={message.userMessage || message.aiMessage}
+        isUserMessage={!!message.userMessage}
+      />
+    ));
   };
 
   return (
     <CenterBox>
       <StyledDiv>
         <StyledChat>
-          <StyledChatMessageInput>
-            <textarea
-              ref={textareaRef}
-              value={message}
-              onChange={handleMessageChange}
-              onKeyPress={handleKeyPress}
-              placeholder="Type your message here..."
-            />
-            <button onClick={handleSubmit}> Send</button>
-          </StyledChatMessageInput>
+          <ChatMessageInput
+            textareaRef={textareaRef}
+            handleSubmit={handleSubmit}
+            message={message}
+            handleMessageChange={handleMessageChange}
+            handleKeyPress={handleKeyPress}
+            placeholder="Type your message here..."
+          />
           <StyledChatMessagesBody>
             {renderMessages()}
             <div ref={messagesEndRef} />
