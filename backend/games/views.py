@@ -461,7 +461,7 @@ def ask_AI(request):
 
         if analysis_results.get("no_match"):
             return JsonResponse(
-                {"message": "I do not have an answer for this request 🧐.\n Please send another one 🤓"})
+                {"message": "I do not have an answer for this request.\n Please send another one 🤓"})
 
         return JsonResponse({"analysis": analysis_results})
     except JSONDecodeError:
