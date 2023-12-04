@@ -33,6 +33,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#gameStreamedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#gameStreamedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#StreamingService"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#hasAchievement -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#hasAchievement">
@@ -323,11 +333,17 @@
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Id -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Id">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Reviews"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Team"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Tournament"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Reviews"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Team"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Tournament"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
@@ -492,9 +508,15 @@
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Title -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Title">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Team"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Tournament"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Team"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Tournament"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -554,7 +576,12 @@
 
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game">
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Reviews"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Team"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Tournament"/>
+    </owl:Class>
     
 
 
@@ -624,7 +651,11 @@
 
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Player">
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Reviews"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Team"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Tournament"/>
+    </owl:Class>
     
 
 
@@ -656,6 +687,8 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Reviews">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Game"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Team"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Tournament"/>
     </owl:Class>
     
 
@@ -692,7 +725,9 @@
 
     <!-- http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Team -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Team"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Team">
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ozodorifjonov/ontologies/2023/10/video-games-v2#Tournament"/>
+    </owl:Class>
     
 
 
