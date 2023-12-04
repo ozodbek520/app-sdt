@@ -425,6 +425,9 @@ def analyze_text(text):
     if "thanks" in text_lower or "thank you" in text_lower:
         return {"gratitude": True}
 
+    if "bye" in text_lower or "good bye" in text_lower:
+        return {"farewell": True}
+
     return {"no_match": True}
 
 
@@ -458,6 +461,9 @@ def ask_AI(request):
 
         if analysis_results.get("gratitude"):
             return JsonResponse({"message": "You're welcome! If you have any more questions, feel free to ask 😉."})
+
+        if analysis_results.get("farewell"):
+            return JsonResponse({"message": "See you later. Bye bye 👋"})
 
         if analysis_results.get("no_match"):
             return JsonResponse(
