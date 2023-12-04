@@ -1,5 +1,7 @@
 import json
 import re
+import spacy
+from spacy.matcher import Matcher
 from json import JSONDecodeError
 from urllib.parse import quote as urlquote
 from SPARQLWrapper import SPARQLWrapper, JSON
@@ -403,32 +405,43 @@ def fetch_players(limit):
     return players_data
 
 
+nlp = spacy.load("en_core_web_sm")
+
+matcher = Matcher(nlp.vocab)
+
+patterns = {
+    "fetch_games": [{"LOWER": {"REGEX": "\d+"}}, {"LOWER": "best"}, {"LOWER": "games"}],
+    "fetch_players": [{"LOWER": {"REGEX": "\d+"}}, {"LOWER": "best"}, {"LOWER": "players"}],
+    "greeting": [{"LOWER": {"IN": ["hello", "hi", "how are you"]}}],
+    "informal_greeting": [{"LOWER": {"IN": ["wassup", "whassup"]}}],
+    "gratitude": [{"LOWER": {"IN": ["thanks", "thank you"]}}],
+    "farewell": [{"LOWER": {"IN": ["bye", "goodbye", "good bye"]}}],
+}
+
+for label, pattern in patterns.items():
+    matcher.add(label, [pattern])
+
+
 def analyze_text(text):
-    text_lower = text.lower()
-    match_games = re.search(r"(\d+) best games", text_lower)
-    if match_games:
-        number_of_games = int(match_games.group(1))
-        return {"fetch_games": True, "number": number_of_games}
+    doc = nlp(text.lower())
+    matches = matcher(doc)
+    analysis_results = {}
 
-    match_players = re.search(r"(\d+) best players", text_lower)
-    if "best players" in text_lower or "all players" in text_lower:
-        default_number_of_players = 6
-        number_of_players = int(match_players.group(1)) if match_players else default_number_of_players
-        return {"fetch_players": True, "number": number_of_players}
+    for match_id, start, end in matches:
+        rule_id = nlp.vocab.strings[match_id]
+        span = doc[start:end]
+        match_text = span.text
 
-    if any(greeting in text_lower for greeting in ["hello", "hi", "how are you"]):
-        return {"greeting": True}
+        if rule_id == "fetch_games":
+            analysis_results["fetch_games"] = True
+            analysis_results["number"] = int(re.search(r"\d+", match_text).group())
+        elif rule_id == "fetch_players":
+            analysis_results["fetch_players"] = True
+            analysis_results["number"] = int(re.search(r"\d+", match_text).group())
+        else:
+            analysis_results[rule_id] = True
 
-    if "wassup" in text_lower or "whassup" in text_lower:
-        return {"informal_greeting": True}
-
-    if "thanks" in text_lower or "thank you" in text_lower:
-        return {"gratitude": True}
-
-    if "bye" in text_lower or "good bye" in text_lower:
-        return {"farewell": True}
-
-    return {"no_match": True}
+    return analysis_results
 
 
 @require_http_methods(["POST"])
@@ -438,37 +451,34 @@ def ask_AI(request):
         text = data.get("text", "")
         analysis_results = analyze_text(text)
 
-        if analysis_results.get("fetch_games"):
-            games_list = fetch_games(analysis_results.get("number"))
-            games_text = "Here's a list of {} games:\n".format(len(games_list))
-            for idx, game in enumerate(games_list, start=1):
-                games_text += "{}. {}\n".format(idx, game['title'])
-            return JsonResponse({"message": games_text})
+        if analysis_results:
+            if analysis_results.get("fetch_games"):
+                games_list = fetch_games(analysis_results.get("number"))
+                games_text = "Here's a list of {} games:\n".format(len(games_list))
+                for idx, game in enumerate(games_list, start=1):
+                    games_text += "{}. {}\n".format(idx, game['title'])
+                return JsonResponse({"message": games_text})
 
-        if analysis_results.get("fetch_players"):
-            players_list = fetch_players(analysis_results.get("number"))
-            players_text = "Here's a list of {} players:\n".format(len(players_list))
-            for idx, player in enumerate(players_list, start=1):
-                players_text += "{}. {} - {}\n".format(idx, player['playerName'], player['playerGameName'])
+            if analysis_results.get("fetch_players"):
+                players_list = fetch_players(analysis_results.get("number"))
+                players_text = "Here's a list of {} players:\n".format(len(players_list))
+                for idx, player in enumerate(players_list, start=1):
+                    players_text += "{}. {} - {}\n".format(idx, player['playerName'], player['playerGameName'])
+                return JsonResponse({"message": players_text})
 
-            return JsonResponse({"message": players_text})
+            if analysis_results.get("greeting"):
+                return JsonResponse({"message": "Hi, How can I help you?"})
 
-        if analysis_results.get("greeting"):
-            return JsonResponse({"message": "Hi, How can I help you?"})
+            if analysis_results.get("informal_greeting"):
+                return JsonResponse({"message": "Hey dude! What can I do for you 😎?"})
 
-        if analysis_results.get("informal_greeting"):
-            return JsonResponse({"message": "Hey dude! What can I do for you 😎?"})
+            if analysis_results.get("gratitude"):
+                return JsonResponse({"message": "You're welcome! If you have any more questions, feel free to ask 😉."})
 
-        if analysis_results.get("gratitude"):
-            return JsonResponse({"message": "You're welcome! If you have any more questions, feel free to ask 😉."})
+            if analysis_results.get("farewell"):
+                return JsonResponse({"message": "See you later. Bye bye 👋"})
+        else:
+            return JsonResponse({"message": "I do not have an answer for this request.\nPlease send another one 🤓"})
 
-        if analysis_results.get("farewell"):
-            return JsonResponse({"message": "See you later. Bye bye 👋"})
-
-        if analysis_results.get("no_match"):
-            return JsonResponse(
-                {"message": "I do not have an answer for this request.\n Please send another one 🤓"})
-
-        return JsonResponse({"analysis": analysis_results})
     except JSONDecodeError:
         return JsonResponse({"error": "Invalid JSON"}, status=400)
