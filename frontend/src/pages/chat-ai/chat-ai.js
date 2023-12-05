@@ -74,6 +74,7 @@ const ChatAi = () => {
       handleSubmit(e);
     }
   };
+
   const Message = memo(({ message, isUserMessage }) => {
     if (isUserMessage) {
       return <UserMessage message={message} />;
